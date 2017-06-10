@@ -1,0 +1,154 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="16D32" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="YTP-He-fvr">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--root-->
+        <scene sceneID="eK5-9L-Qye">
+            <objects>
+                <viewControllerPlaceholder storyboardName="Settings" referencedIdentifier="root" id="AMw-3u-UEy" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="aDZ-Zs-w8b" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-1638" y="-434"/>
+        </scene>
+        <!--My Pantry-->
+        <scene sceneID="k5R-hd-5gu">
+            <objects>
+                <tableViewController storyboardIdentifier="pantry" useStoryboardIdentifierAsRestorationIdentifier="YES" id="zFK-sa-eEr" customClass="MyPantryViewController" customModule="Pantry" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="108" sectionHeaderHeight="28" sectionFooterHeight="28" id="DxF-SK-POH">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="618"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="itemCell" rowHeight="108" id="p7H-2N-70T" customClass="PantryTableViewCell" customModule="Pantry" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="28" width="375" height="108"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="p7H-2N-70T" id="piv-KC-e4n">
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="107"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0:00:00" textAlignment="right" lineBreakMode="wordWrap" numberOfLines="2" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="5xp-ID-oR6">
+                                            <rect key="frame" x="267" y="20" width="100" height="67"/>
+                                            <constraints>
+                                                <constraint firstAttribute="width" constant="100" id="Kxp-1Y-mKm"/>
+                                            </constraints>
+                                            <fontDescription key="fontDescription" type="system" pointSize="27"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="10" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="k7K-Kb-cOj">
+                                            <rect key="frame" x="11" y="66" width="36" height="33"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="30"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="Item Name Thats too longgggg" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="ZRt-xx-DIh">
+                                            <rect key="frame" x="11" y="12" width="279" height="46"/>
+                                            <fontDescription key="fontDescription" name=".SFNSDisplay" family=".SF NS Display" pointSize="20"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                    <constraints>
+                                        <constraint firstItem="ZRt-xx-DIh" firstAttribute="leading" secondItem="piv-KC-e4n" secondAttribute="leadingMargin" constant="4" id="8CC-q9-kU5"/>
+                                        <constraint firstItem="5xp-ID-oR6" firstAttribute="top" secondItem="piv-KC-e4n" secondAttribute="topMargin" constant="12" id="BSt-sD-BrE"/>
+                                        <constraint firstItem="k7K-Kb-cOj" firstAttribute="bottom" secondItem="piv-KC-e4n" secondAttribute="bottomMargin" id="JDu-XN-Z0s"/>
+                                        <constraint firstItem="5xp-ID-oR6" firstAttribute="trailing" secondItem="piv-KC-e4n" secondAttribute="trailingMargin" id="QaH-dF-Dbq"/>
+                                        <constraint firstItem="k7K-Kb-cOj" firstAttribute="top" secondItem="ZRt-xx-DIh" secondAttribute="bottom" constant="8" id="YzP-rz-7e5"/>
+                                        <constraint firstAttribute="bottomMargin" secondItem="5xp-ID-oR6" secondAttribute="bottom" constant="12" id="bS9-TW-QsK"/>
+                                        <constraint firstItem="5xp-ID-oR6" firstAttribute="leading" secondItem="ZRt-xx-DIh" secondAttribute="trailing" constant="4" id="jMK-OL-NaN"/>
+                                        <constraint firstItem="ZRt-xx-DIh" firstAttribute="top" secondItem="piv-KC-e4n" secondAttribute="topMargin" constant="12" id="wKR-Ab-Bej"/>
+                                        <constraint firstItem="k7K-Kb-cOj" firstAttribute="leading" secondItem="ZRt-xx-DIh" secondAttribute="leading" id="yDh-x5-pxu"/>
+                                    </constraints>
+                                </tableViewCellContentView>
+                                <connections>
+                                    <outlet property="countLabel" destination="k7K-Kb-cOj" id="bVK-eF-cEs"/>
+                                    <outlet property="expirationLabel" destination="5xp-ID-oR6" id="lM8-GB-XtH"/>
+                                    <outlet property="nameLabel" destination="ZRt-xx-DIh" id="kmm-B9-cyX"/>
+                                    <segue destination="DdI-8f-VqR" kind="show" id="lTp-6R-fC3"/>
+                                </connections>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="zFK-sa-eEr" id="V0T-OK-g3B"/>
+                            <outlet property="delegate" destination="zFK-sa-eEr" id="bHu-Y7-69C"/>
+                        </connections>
+                    </tableView>
+                    <tabBarItem key="tabBarItem" title="Pantry" id="f65-pS-Npg"/>
+                    <navigationItem key="navigationItem" title="My Pantry" id="lv0-uv-jCW">
+                        <barButtonItem key="leftBarButtonItem" image="Settings Nav Bar" id="1Vc-gr-1Zo">
+                            <connections>
+                                <segue destination="AMw-3u-UEy" kind="presentation" modalTransitionStyle="flipHorizontal" id="KiL-J5-sY7"/>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" systemItem="camera" id="PXu-nt-fuc">
+                            <connections>
+                                <segue destination="szl-sF-cZJ" kind="show" id="YrU-Lo-Mvm"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
+                    <simulatedTabBarMetrics key="simulatedBottomBarMetrics" translucent="NO"/>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="55L-di-cY8" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-1559.2" y="9.4452773613193415"/>
+        </scene>
+        <!--upcscan-->
+        <scene sceneID="H89-Hz-7iD">
+            <objects>
+                <viewControllerPlaceholder storyboardName="Groceries" referencedIdentifier="upcscan" id="szl-sF-cZJ" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="UIk-bk-03j" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-689" y="-3"/>
+        </scene>
+        <!--Item Details View Controller-->
+        <scene sceneID="HNj-aH-Zc8">
+            <objects>
+                <viewController id="DdI-8f-VqR" customClass="ItemDetailsViewController" customModule="Pantry" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="oPH-mt-mIh"/>
+                        <viewControllerLayoutGuide type="bottom" id="ryR-Ij-MpJ"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="hBK-hi-Zk6">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="618"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="HTo-Vt-Nop" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-1559" y="766"/>
+        </scene>
+        <!--Pantry-->
+        <scene sceneID="cXP-D4-Dt3">
+            <objects>
+                <navigationController storyboardIdentifier="root" automaticallyAdjustsScrollViewInsets="NO" useStoryboardIdentifierAsRestorationIdentifier="YES" id="YTP-He-fvr" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Pantry" image="second" id="l1e-BH-hRv"/>
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="8dF-FB-qcl">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="zFK-sa-eEr" kind="relationship" relationship="rootViewController" id="TpR-9Y-aqf"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="upN-6A-eD6" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-2498.4000000000001" y="9.4452773613193415"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="Settings Nav Bar" width="44" height="44"/>
+        <image name="second" width="30" height="30"/>
+    </resources>
+</document>
