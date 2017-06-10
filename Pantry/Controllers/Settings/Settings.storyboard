@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="16D32" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12121" systemVersion="16F73" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12089"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -13,7 +13,7 @@
         <scene sceneID="6kZ-BO-S0K">
             <objects>
                 <navigationController storyboardIdentifier="root" useStoryboardIdentifierAsRestorationIdentifier="YES" id="Z7k-GI-bvD" sceneMemberID="viewController">
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="xVG-55-zf3">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="xVG-55-zf3">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -25,10 +25,10 @@
             </objects>
             <point key="canvasLocation" x="-812" y="18"/>
         </scene>
-        <!--Title-->
+        <!--Settings-->
         <scene sceneID="Ki0-OJ-Bma">
             <objects>
-                <viewController storyboardIdentifier="temp" useStoryboardIdentifierAsRestorationIdentifier="YES" id="KQQ-IM-Oge" customClass="SettingsViewController" customModule="Pantry" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="settings" useStoryboardIdentifierAsRestorationIdentifier="YES" id="KQQ-IM-Oge" customClass="SettingsViewController" customModule="Pantry" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="YGA-90-ENa"/>
                         <viewControllerLayoutGuide type="bottom" id="S9L-Q9-L0a"/>
@@ -45,7 +45,7 @@
                                         <rect key="frame" x="0.0" y="28" width="375" height="107"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Dxv-Cs-k6X" id="bFw-JE-Wqv">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="106"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="106.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Sign In" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uC2-Zp-VbQ">
@@ -69,8 +69,12 @@
                             <constraint firstItem="zN4-i3-nhV" firstAttribute="leading" secondItem="LNh-zW-tGx" secondAttribute="leading" id="Uj9-1p-hoH"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title="Title" id="6N8-xB-voY">
-                        <barButtonItem key="rightBarButtonItem" title="Done" id="Pah-PT-QTl"/>
+                    <navigationItem key="navigationItem" title="Settings" id="6N8-xB-voY">
+                        <barButtonItem key="rightBarButtonItem" title="Done" id="Pah-PT-QTl">
+                            <connections>
+                                <action selector="done:" destination="KQQ-IM-Oge" id="LdR-01-g8C"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
                 </viewController>

@@ -117,7 +117,7 @@ class UPCScanViewController: UIViewController {
 			self.scanner!.freezeCapture()
 			self.scanner!.stopScanning()
 
-			UPCitemdb.lookup(by: codeObjects[0].stringValue, returned: { (data, error) in
+			UPCitemdb.lookup(upc: codeObjects[0].stringValue!, returned: { (data, error) in
 				guard error == nil else {
 					self.scanner!.unfreezeCapture()
 					self.beginScanning()
@@ -125,15 +125,15 @@ class UPCScanViewController: UIViewController {
 					return
 				}
 
-				var failsafeData: [String: Any] = [:]
+				var productInfo:[String : Any] = [:]
 
 				if data != nil {
-					failsafeData = data!
+					productInfo += data!
 				}
 
-				failsafeData["ean"] = codeObjects[0].stringValue
+				productInfo["ean"] = codeObjects[0].stringValue
 
-				self.performSegue(withIdentifier: "editDetails", sender: failsafeData)
+				self.performSegue(withIdentifier: "editDetails", sender: productInfo)
 			})
 		})
 	}

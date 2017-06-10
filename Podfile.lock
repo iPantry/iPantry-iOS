@@ -2,11 +2,21 @@ PODS:
   - Alamofire (4.4.0)
   - AlamofireImage (3.2.0):
     - Alamofire (~> 4.1)
+  - Bolts (1.8.4):
+    - Bolts/AppLinks (= 1.8.4)
+    - Bolts/Tasks (= 1.8.4)
+  - Bolts/AppLinks (1.8.4):
+    - Bolts/Tasks
+  - Bolts/Tasks (1.8.4)
   - CDAlertView (0.6.0)
   - ChameleonFramework/Default (2.1.0)
   - ChameleonFramework/Swift (2.1.0):
     - ChameleonFramework/Default
   - DeviceKit (1.0.1)
+  - FBSDKCoreKit (4.23.0):
+    - Bolts (~> 1.7)
+  - FBSDKLoginKit (4.23.0):
+    - FBSDKCoreKit
   - Firebase/Auth (4.0.2):
     - Firebase/Core
     - FirebaseAuth (= 4.0.0)
@@ -77,6 +87,19 @@ PODS:
     - FirebaseAnalytics (~> 4.0)
     - FirebaseCore (~> 4.0)
     - GTMSessionFetcher/Core (~> 1.1)
+  - FirebaseUI/Auth (4.0.0):
+    - Firebase/Auth
+  - FirebaseUI/Database (4.0.0):
+    - Firebase/Database
+  - FirebaseUI/Facebook (4.0.0):
+    - FBSDKLoginKit (~> 4.0)
+    - FirebaseUI/Auth
+  - FirebaseUI/Google (4.0.0):
+    - FirebaseUI/Auth
+    - GoogleSignIn (~> 4.0)
+  - FirebaseUI/Storage (4.0.0):
+    - Firebase/Storage
+    - SDWebImage (~> 4.0)
   - FoldingCell (2.1.3)
   - GeoFire (2.0.0):
     - Firebase/Database (~> 4.0)
@@ -122,6 +145,9 @@ PODS:
   - MTBBarcodeScanner (5.0.0)
   - PermissionScope (1.1.1)
   - Protobuf (3.3.0)
+  - SDWebImage (4.0.0):
+    - SDWebImage/Core (= 4.0.0)
+  - SDWebImage/Core (4.0.0)
   - SwifterSwift (1.6.4)
   - UITextField+Shake (1.1.2)
   - VersionTrackerSwift (1.1.0)
@@ -140,6 +166,11 @@ DEPENDENCIES:
   - Firebase/Invites
   - Firebase/Messaging
   - Firebase/Storage
+  - FirebaseUI/Auth (~> 4.0)
+  - FirebaseUI/Database (~> 4.0)
+  - FirebaseUI/Facebook (~> 4.0)
+  - FirebaseUI/Google (~> 4.0)
+  - FirebaseUI/Storage (~> 4.0)
   - FoldingCell (~> 2.0)
   - GeoFire (from `https://github.com/firebase/geofire-objc.git`)
   - JVFloatLabeledTextField
@@ -166,9 +197,12 @@ CHECKOUT OPTIONS:
 SPEC CHECKSUMS:
   Alamofire: dc44b1600b800eb63da6a19039a0083d62a6a62d
   AlamofireImage: 157ed682cc81d3b9db4fb90c1f12180ac552d93b
+  Bolts: 8a7995239dbe724f9cba2248b766d48b7ebdd322
   CDAlertView: e6f365fa0fac7349197e7ea4bd7810c069215cf4
   ChameleonFramework: d21a3cc247abfe5e37609a283a8238b03575cf64
   DeviceKit: 461e525867e48e725f41699c1cab3100df1258ff
+  FBSDKCoreKit: d7829f5a69901cd7296105328e4c3c3fc7da6518
+  FBSDKLoginKit: 6b92bd65f319d669d2b0730e49db495ef1660566
   Firebase: c7ad0731eab26d18a3fc547dd048b0f7cd9c63ae
   FirebaseAnalytics: 4d7040fefc3cd8b291cde35f12cf063d7963f15d
   FirebaseAuth: ebb6abcbabae00fc47446d690c19ce68d8484fde
@@ -180,6 +214,7 @@ SPEC CHECKSUMS:
   FirebaseInvites: 1940225e620b0423cf04fb4e4c7eb2a1b0b7595b
   FirebaseMessaging: 227406c05b0dc9290702d2e9f18ab5528f0c2cf2
   FirebaseStorage: 8110a1ed2034c8fbfd83890d2acc9cdbbd99afec
+  FirebaseUI: b9de05bfb4768db05f64ea90fc2f6a07b819118f
   FoldingCell: f3073f8b24cf20866a35198f31e3b67aea64e96e
   GeoFire: 02f02683e09367c2eee073c6b09c794da19833ee
   GoogleAPIClientForREST: bf724227a6ad1459aab09b73800aad9184a0f64c
@@ -191,10 +226,11 @@ SPEC CHECKSUMS:
   MTBBarcodeScanner: f7ac0087f2467ba73e4d429bb1bc2098fe11b09f
   PermissionScope: a30c16e015779ba27c97c124e7539e27b5829de2
   Protobuf: d582fecf68201eac3d79ed61369ef45734394b9c
+  SDWebImage: 76a6348bdc74eb5a55dd08a091ef298e56b55e41
   SwifterSwift: 92c73c47c3cbf7d5f788adf6459bf07b5d23d3fb
   UITextField+Shake: 47cc0429dafb3da580686339ad2da091249a8ea2
   VersionTrackerSwift: 7f08827b631584ecbda53361b6ab3f9587fac5ab
 
-PODFILE CHECKSUM: ce4a005592b47268de87adf10b67676aa8973ced
+PODFILE CHECKSUM: c783b4cb0bb55725e47ac2c77d72a4ef5d6b5a14
 
 COCOAPODS: 1.3.0.beta.1

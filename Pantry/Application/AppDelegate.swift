@@ -14,7 +14,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 	var window: UIWindow?
 
-	var keys: [String: String]?
+	var apikeys: [String: String]?
 
 
 	func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
@@ -22,7 +22,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 		FirebaseApp.configure()
 
 		if let path = Bundle.main.path(forResource: "Keys", ofType: "plist") {
-			keys = NSDictionary(contentsOfFile: path) as? [String: String]
+			apikeys = NSDictionary(contentsOfFile: path) as? [String: String]
 		}
 
 		return true

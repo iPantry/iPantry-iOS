@@ -116,7 +116,7 @@ class EditItemDetailsViewController: UIViewController {
 		let itemRef = self.ref.child("items")
 
 
-		self.customItem["creator"] = user.uid
+		self.customItem["createdBy"] = user.uid
 
 
 

@@ -12,15 +12,21 @@ class SettingsViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+		self.tabBarController?.tabBar.isHidden = true
 
-		self.navigationController?.navigationBar.topItem?.leftBarButtonItem = UIBarButtonItem(title: "Done", style: .plain, target: self, action: #selector(returnToColorTabs))
-		//		self.navigationController?.navigationBar.backItem?.backBarButtonItem?.action = #selector(back)
-
-        // Do any additional setup after loading the view.
     }
 
-	func returnToColorTabs(){
-		let _ = self.navigationController?.popViewController(animated: false)
+	override func viewWillAppear(_ animated: Bool) {
+		super.viewWillAppear(animated)
+
+		self.navigationItem.hidesBackButton = true
+	}
+
+
+	override func viewWillDisappear(_ animated: Bool) {
+		super.viewWillDisappear(animated)
+
+		self.navigationItem.hidesBackButton = false
 	}
 
 
@@ -29,6 +35,15 @@ class SettingsViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
+
+	@IBAction func done(_ sender: Any) {
+		UIView.beginAnimations("animation", context: nil)
+		UIView.setAnimationDuration(0.7)
+		UIView.setAnimationTransition(.flipFromRight, for: self.navigationController!.view, cache: false)
+		self.tabBarController?.tabBar.isHidden = false
+		self.navigationController?.popToRootViewController(animated: false)
+		UIView.commitAnimations()
+	}
 
     /*
     // MARK: - Navigation

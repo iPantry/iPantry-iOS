@@ -9,10 +9,10 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Tab Bar Controller-->
+        <!--Pantry Tab Bar Controller-->
         <scene sceneID="1YM-ak-bXI">
             <objects>
-                <tabBarController id="Xkf-Ms-Y06" sceneMemberID="viewController">
+                <tabBarController id="Xkf-Ms-Y06" customClass="PantryTabBarController" customModule="Pantry" customModuleProvider="target" sceneMemberID="viewController">
                     <navigationItem key="navigationItem" id="QlF-GM-kDb"/>
                     <tabBar key="tabBar" contentMode="scaleToFill" id="Rfa-HY-mQx">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="49"/>
@@ -49,10 +49,10 @@
             </objects>
             <point key="canvasLocation" x="-1516" y="109"/>
         </scene>
-        <!--Work Damnit-->
+        <!--Test-->
         <scene sceneID="x20-Kd-Kd6">
             <objects>
-                <viewController id="2XF-3C-J4s" sceneMemberID="viewController">
+                <viewController title="Test" id="2XF-3C-J4s" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="ANe-wH-HgC"/>
                         <viewControllerLayoutGuide type="bottom" id="VKv-q1-D8T"/>
@@ -62,8 +62,8 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Item" id="RLD-WX-6Ds"/>
-                    <navigationItem key="navigationItem" title="Work Damnit" id="6d7-MN-QUZ"/>
+                    <tabBarItem key="tabBarItem" title="Name" id="RLD-WX-6Ds"/>
+                    <navigationItem key="navigationItem" title="Working" id="UNa-y7-emA"/>
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dt1-j2-To0" userLabel="First Responder" sceneMemberID="firstResponder"/>

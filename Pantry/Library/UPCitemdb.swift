@@ -9,7 +9,7 @@
 import Alamofire
 
 class UPCitemdb {
-	static func lookup(by barcode: String, returned: (([String: AnyObject]?, Error?) -> Void)?) {
+	static func lookup(upc barcode: String, returned: (([String: AnyObject]?, Error?) -> Void)?) {
 
 		let params = ["upc": barcode]
 		let headers = ["Content-Type": "application/json"]
