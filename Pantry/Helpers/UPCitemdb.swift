@@ -18,19 +18,17 @@ class UPCitemdb {
 		                  method: .post,
 		                  parameters: params,
 		                  encoding: JSONEncoding.default,
-		                  headers: headers).responseJSON {
-			(response) in
+		                  headers: headers).responseJSON { (response) in
 
 			guard response.error == nil,
 				let json = response.result.value as? [String: AnyObject]
 				else {
-				returned?(nil,response.error)
-				print("UPCitemdb Lookup Error: \(response.error)")
+				returned?(nil, response.error)
+					print("UPCitemdb Lookup Error: \(String(describing: response.error))")
 				return
 			}
 
 			print("JSON: \(json)")
-
 
 			returned?(json, response.error)
 

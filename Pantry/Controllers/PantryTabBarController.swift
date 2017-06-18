@@ -11,45 +11,31 @@ import FirebaseAuth
 
 class PantryTabBarController: UITabBarController, UITabBarControllerDelegate {
 
-	var authHandle: AuthStateDidChangeListenerHandle?
-
-    override func viewDidLoad() {
-        super.viewDidLoad()
+	override func viewDidLoad() {
+		super.viewDidLoad()
 		self.delegate = self
+	}
 
-		authHandle = Auth.auth().addStateDidChangeListener() { (auth, user) in
-			guard let user = user else {
-				print("[INFO]: No User logged in")
-				Auth.auth().signInAnonymously() { (user, error) in
-					guard error == nil else {
-						print("[ERROR]: Could not log in anonymously: \(error!.localizedDescription)")
-						// TODO: Alert User, retry
-						return
-					}
-				}
-				return
-			}
+	override func viewWillAppear(_ animated: Bool) {
 
-			if user.isAnonymous {
-				print("[INFO]: User is logged in anonymously")
-			} else {
-				print("[INFO]: \(user.email ?? "Someone") is logged in")
-			}
-		}
-    }
+	}
 
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-    
+	override func viewWillDisappear(_ animated: Bool) {
+
+	}
+
+	override func didReceiveMemoryWarning() {
+		super.didReceiveMemoryWarning()
+		// Dispose of any resources that can be recreated.
+	}
+
 	func tabBarController(_ tabBarController: UITabBarController, didSelect viewController: UIViewController) {
 		if let controller = viewController as? UINavigationController {
 			controller.popToRootViewController(animated: false)
 		}
 	}
 
-    /*
+	/*
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation

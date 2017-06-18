@@ -1,14 +1,15 @@
 //
-//  ItemDetailsViewController.swift
+//  PantryAuthPickerViewController.swift
 //  Pantry
 //
-//  Created by Justin Oroz on 11/12/16.
-//  Copyright © 2016 Justin Oroz. All rights reserved.
+//  Created by Justin Oroz on 6/10/17.
+//  Copyright © 2017 Justin Oroz. All rights reserved.
 //
 
 import UIKit
+import FirebaseAuthUI
 
-class ItemDetailsViewController: UIViewController {
+class PantryAuthPickerViewController: FUIAuthPickerViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()

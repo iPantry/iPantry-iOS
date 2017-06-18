@@ -15,7 +15,7 @@ class SimpleUPC {
 	static private let path = "/v1.php"
 	static private let auth = (UIApplication.shared.delegate as? AppDelegate)?.apikeys?["SimpleUPC"]
 
-	static func lookup(by barcode: String, returned: (([String: AnyObject]? , Error?) -> Void)?) {
+	static func lookup(by barcode: String, returned: (([String: AnyObject]?, Error?) -> Void)?) {
 
 		guard let auth = self.auth else {
 			print("[ERROR]: No SimpleUPC API Key Found")
@@ -25,7 +25,7 @@ class SimpleUPC {
 		let method = "FetchImageByUPC"
 		let params = ["upc": barcode]
 
-		let request:[String:Any] = [
+		let request: [String: Any] = [
 						"auth": auth,
 		              	"method": method,
 		              	"params": params
@@ -36,23 +36,20 @@ class SimpleUPC {
 		                  method: .post,
 		                  parameters: request,
 		                  encoding: JSONEncoding.default,
-		                  headers: headers).responseJSON {
-							(response) in
+		                  headers: headers).responseJSON { (response) in
 
 							guard response.error == nil,
 								let json = response.result.value as? [String: AnyObject]
 								else {
-									returned?(nil,response.error!)
+									returned?(nil, response.error!)
 									print("SimpleUPC Lookup Error: \(response.error!)")
 									return
 							}
 
 							print("JSON: \(json)")
-							
-							
-							returned?(json, nil)
-							
-			}.resume()
 
+							returned?(json, nil)
+
+			}.resume()
 	}
 }

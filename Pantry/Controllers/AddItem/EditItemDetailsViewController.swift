@@ -25,13 +25,11 @@ class EditItemDetailsViewController: UIViewController {
 	var ean: String!
 	var customItem: [String: Any] = [:]
 
-
 	override func viewDidLoad() {
 		super.viewDidLoad()
 		ref = Database.database().reference()
 
 		self.customItem["ean"] = self.ean
-
 
 		guard let items = data["items"] as? [[String: AnyObject]] else {
 			// TODO: Error Handle
@@ -61,8 +59,6 @@ class EditItemDetailsViewController: UIViewController {
 		}
 	}
 
-
-
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
@@ -76,8 +72,7 @@ class EditItemDetailsViewController: UIViewController {
 		itemImage.animationImages = []
 
 		for url in urls {
-			Alamofire.request(url).responseImage(completionHandler: {
-				(data) in
+			Alamofire.request(url).responseImage(completionHandler: { (data) in
 
 				guard let image = data.result.value else {
 					return
@@ -115,10 +110,7 @@ class EditItemDetailsViewController: UIViewController {
 
 		let itemRef = self.ref.child("items")
 
-
 		self.customItem["createdBy"] = user.uid
-
-
 
 		if user.isAnonymous {
 			self.customItem["pantry"] = false
@@ -135,11 +127,7 @@ class EditItemDetailsViewController: UIViewController {
 
 		}
 
-
-
-
 	}
-
 
     /*
     // MARK: - Navigation

@@ -35,7 +35,7 @@ class KeyboardHandler {
 
 		layoutSetup?(isHiding, keyboardHeight)
 
-		UIView.animate(withDuration: animationDuration, delay: 0.0, options: [.beginFromCurrentState, animationCurve] , animations: {
+		UIView.animate(withDuration: animationDuration, delay: 0.0, options: [.beginFromCurrentState, animationCurve], animations: {
 
 			self.animations?(isHiding, keyboardHeight)
 

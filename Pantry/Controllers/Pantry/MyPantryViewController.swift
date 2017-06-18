@@ -12,13 +12,10 @@ import FirebaseDatabase
 
 class MyPantryViewController: UITableViewController {
 
-	var authHandle: AuthStateDidChangeListenerHandle?
-
     override func viewDidLoad() {
         super.viewDidLoad()
-
-		authHandle = (self.tabBarController as? PantryTabBarController)?.authHandle
-
+		self.tableView.delegate = self
+		self.tableView.dataSource = self
 
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
@@ -29,34 +26,19 @@ class MyPantryViewController: UITableViewController {
 
 	override func viewWillAppear(_ animated: Bool) {
 		super.viewWillAppear(animated)
-
-//		authHandle = Auth.auth().addStateDidChangeListener() { (auth, user) in
-//			guard let user = user else {
-//				print("[INFO]: No User logged in")
-//				Auth.auth().signInAnonymously() { (user, error) in
-//					guard error == nil else {
-//						print("[ERROR]: Could not log in anonymously: \(error!.localizedDescription)")
-//						// TODO: Alert User, retry
-//						return
-//					}
-//				}
-//				return
-//			}
-//
-//			if user.isAnonymous {
-//				print("[INFO]: User is logged in anonymously")
-//			} else {
-//				print("[INFO]: \(user.email ?? "Someone") is logged in")
-//			}
-//		}
+		self.tableView.reloadData()
+		NotificationCenter.default.addObserver(self, selector: #selector(pantry), name: .pantryListWasUpdated, object: nil)
 	}
-
-
-
 
 	override func viewWillDisappear(_ animated: Bool) {
 		super.viewWillDisappear(animated)
-		Auth.auth().removeStateDidChangeListener(authHandle!)
+		NotificationCenter.default.removeObserver(self, name: .pantryListWasUpdated, object: nil)
+	}
+
+	@objc func pantry (notification: Notification) {
+		DispatchQueue.main.async {
+			self.tableView.reloadData()
+		}
 	}
 
     override func didReceiveMemoryWarning() {
@@ -67,23 +49,23 @@ class MyPantryViewController: UITableViewController {
     // MARK: - Table view data source
 
     override func numberOfSections(in tableView: UITableView) -> Int {
-        // #warning Incomplete implementation, return the number of sections
         return 1
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        // #warning Incomplete implementation, return the number of rows
-        return 1
+        return PantryUser.current?.pantry?.list.count ?? 0
     }
 
-
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "itemCell", for: indexPath) as! PantryTableViewCell
+		guard let cell = tableView.dequeueReusableCell(withIdentifier: "itemCell", for: indexPath) as? PantryTableViewCell
+			else {
+			// TODO: Return an Error Cell
+			return UITableViewCell()
+		}
 
         // Configure the cell...
 
 		cell.setItemData("Hot Pockets", quantity: 10, expirationDays: -7)
-		
 
         return cell
     }
@@ -91,8 +73,10 @@ class MyPantryViewController: UITableViewController {
 	@IBAction func showSettings(_ sender: Any) {
 
 		let settingsStory = UIStoryboard(name: "Settings", bundle: nil)
-		let rootNav = settingsStory.instantiateViewController(withIdentifier: "settings") as! SettingsViewController
-
+		guard let rootNav = settingsStory.instantiateViewController(withIdentifier: "settings") as? SettingsViewController
+			else {
+			return
+		}
 
 		UIView.beginAnimations("animation", context: nil)
 		UIView.setAnimationDuration(0.7)

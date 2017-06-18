@@ -40,8 +40,13 @@ class GroceryListViewController: UITableViewController {
 	@IBAction func showSettings(_ sender: Any) {
 
 		let settingsStory = UIStoryboard(name: "Settings", bundle: nil)
-		let rootNav = settingsStory.instantiateViewController(withIdentifier: "settings") as! SettingsViewController
+		guard let rootNav = settingsStory.instantiateViewController(withIdentifier: "settings") as? SettingsViewController
+			else {
+				print(.error, message: "Unable to find Settings View Controller")
 
+				return
+
+		}
 
 		UIView.beginAnimations("animation", context: nil)
 		UIView.setAnimationDuration(0.7)

@@ -17,13 +17,11 @@ class BarcodeDatabaseTestingViewController: UIViewController {
 
 	var data: [String: String]?
 
-
 //	("https://api.upcitemdb.com/prod/trial/search",
 //	method: .post,
 //	parameters: ["upc": self.barcodeInput.text!],
 //	encoding: JSONEncoding.default,
 //	headers: nil)
-
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -41,7 +39,7 @@ class BarcodeDatabaseTestingViewController: UIViewController {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-    
+
 	@IBAction func submit(_ sender: AnyObject) {
 
 		self.submitActivity.startAnimating()
@@ -50,8 +48,7 @@ class BarcodeDatabaseTestingViewController: UIViewController {
 		let params = ["upc": self.barcodeInput.text!]
 		let headers = ["Content-Type": "application/json"]
 
-		Alamofire.request("https://api.upcitemdb.com/prod/trial/lookup", method: .post, parameters: params, encoding: JSONEncoding.default, headers: headers).responseJSON {
-			(response) in
+		Alamofire.request("https://api.upcitemdb.com/prod/trial/lookup", method: .post, parameters: params, encoding: JSONEncoding.default, headers: headers).responseJSON { (response) in
 
 			// finished loading, stop graphics
 			DispatchQueue.main.async {
@@ -64,7 +61,7 @@ class BarcodeDatabaseTestingViewController: UIViewController {
 				print("JSON: \(json)")
 
 				if let code = json["code"] as? String {
-					if (code == "OK") {
+					if code == "OK" {
 						print("Success, filling in data")
 						self.performSegue(withIdentifier: "verifydetails", sender: json["items"])
 					} else { // UPC search unsuccessful
@@ -76,17 +73,13 @@ class BarcodeDatabaseTestingViewController: UIViewController {
 					// TODO: ERROR CHECKING
 				}
 
-
 			} else { // Bad response
 				// TODO: ERROR CHECKING
 			}
 
-
 		}.resume()
 
-
 	}
-
 
     // MARK: - Navigation
 
@@ -95,11 +88,13 @@ class BarcodeDatabaseTestingViewController: UIViewController {
         // Get the new view controller using segue.destinationViewController.
         // Pass the selected object to the new view controller.
 
-
-
 		switch segue.identifier {
 		case "verifydetails"?:
-			let target = segue.destination as! EditItemDetailsViewController
+			guard let target = segue.destination as? EditItemDetailsViewController
+				else {
+					print(.error, message: "Segue target is not correct")
+					return
+			}
 
 			if let list = sender as? [[String:AnyObject]] {
 				target.data = list[0]
@@ -110,6 +105,4 @@ class BarcodeDatabaseTestingViewController: UIViewController {
 			break
 		}
     }
-
-
 }

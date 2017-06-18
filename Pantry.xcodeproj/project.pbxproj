@@ -8,7 +8,9 @@
 
 /* Begin PBXBuildFile section */
 		4EF11D5722B664E82F7A06DC /* Pods_PantryUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 09606D778A58C5E9233AFED5 /* Pods_PantryUITests.framework */; };
+		D00C89C41EF62CA900992D19 /* UserDocuments.swift in Sources */ = {isa = PBXBuildFile; fileRef = D00C89C31EF62CA900992D19 /* UserDocuments.swift */; };
 		D012B4541DB59759004A1D1F /* BarcodeDatabaseTestingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D012B4531DB59759004A1D1F /* BarcodeDatabaseTestingViewController.swift */; };
+		D0133E7F1EECDFC80098B056 /* PantryAuthPickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0133E7E1EECDFC80098B056 /* PantryAuthPickerViewController.swift */; };
 		D020470B1D78E8F300CB7C5D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D020470A1D78E8F300CB7C5D /* AppDelegate.swift */; };
 		D020470F1D78E8F300CB7C5D /* UPCScanViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D020470E1D78E8F300CB7C5D /* UPCScanViewController.swift */; };
 		D02047121D78E8F300CB7C5D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D02047101D78E8F300CB7C5D /* Main.storyboard */; };
@@ -21,19 +23,27 @@
 		D04477651DD75A98001FE0A2 /* PantryTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D04477641DD75A98001FE0A2 /* PantryTableViewCell.swift */; };
 		D04477691DD79A79001FE0A2 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = D04477681DD79A79001FE0A2 /* GoogleService-Info.plist */; };
 		D0485D971DD7E7C700BF7441 /* ItemDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0485D961DD7E7C700BF7441 /* ItemDetailsViewController.swift */; };
-		D05B60A31E79E31E002C6A13 /* FirebaseObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = D05B60A21E79E31E002C6A13 /* FirebaseObject.swift */; };
+		D063DA701EEE7E6400DDD37A /* Pantry.swift in Sources */ = {isa = PBXBuildFile; fileRef = D063DA6F1EEE7E6400DDD37A /* Pantry.swift */; };
+		D06874D21EEC24E400532DDF /* SettingsAccountCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D06874D11EEC24E400532DDF /* SettingsAccountCell.swift */; };
+		D06874D51EEC975200532DDF /* infoPrint.swift in Sources */ = {isa = PBXBuildFile; fileRef = D06874D41EEC975200532DDF /* infoPrint.swift */; };
+		D07093A31EEC17D0005DFA56 /* SettingsSignInCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D07093A21EEC17D0005DFA56 /* SettingsSignInCell.swift */; };
+		D07093A51EEC1A13005DFA56 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D07093A41EEC1A13005DFA56 /* SettingsViewController.swift */; };
 		D081428E1EEBAC010016DE79 /* SimpleUPC.swift in Sources */ = {isa = PBXBuildFile; fileRef = D081428D1EEBAC010016DE79 /* SimpleUPC.swift */; };
 		D08142901EEBAF980016DE79 /* Keys.plist in Resources */ = {isa = PBXBuildFile; fileRef = D081428F1EEBAF980016DE79 /* Keys.plist */; };
 		D08142921EEBD07D0016DE79 /* PantryTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D08142911EEBD07D0016DE79 /* PantryTabBarController.swift */; };
 		D08A02521E7686D300F2A486 /* GroceryListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D08A02511E7686D300F2A486 /* GroceryListViewController.swift */; };
 		D08A02541E7686E000F2A486 /* Groceries.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D08A02531E7686E000F2A486 /* Groceries.storyboard */; };
-		D08A02811E76A3A300F2A486 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D08A02801E76A3A300F2A486 /* SettingsViewController.swift */; };
 		D08A02861E7740BD00F2A486 /* UIViewControllerExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = D08A02851E7740BD00F2A486 /* UIViewControllerExtension.swift */; };
 		D08A02891E77596000F2A486 /* Recipes.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D08A02881E77596000F2A486 /* Recipes.storyboard */; };
 		D08F65981E754137006D8C60 /* Pantry.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D08F65971E754137006D8C60 /* Pantry.storyboard */; };
 		D0A7A0FF1E3ADFE900A9D6CA /* EditItemDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0A7A0FE1E3ADFE900A9D6CA /* EditItemDetailsViewController.swift */; };
 		D0B23DD11E7670960059DF72 /* KeyboardHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0B23DD01E7670960059DF72 /* KeyboardHandler.swift */; };
 		D0B23DD41E7680F30059DF72 /* Settings.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D0B23DD31E7680F30059DF72 /* Settings.storyboard */; };
+		D0B41BB51EF4E2AB001EDEA5 /* AddItem.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D0B41BB41EF4E2AB001EDEA5 /* AddItem.storyboard */; };
+		D0D988771EF61DF500DE80D6 /* UPCScannerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0D988761EF61DF500DE80D6 /* UPCScannerView.swift */; };
+		D0EAB15E1EF3AAE1003EBC56 /* PantryItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0EAB15D1EF3AAE1003EBC56 /* PantryItem.swift */; };
+		D0FE18771EF50596007A6561 /* AccountViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0FE18761EF50596007A6561 /* AccountViewController.swift */; };
+		D0FE18791EF511D3007A6561 /* PantryUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0FE18781EF511D3007A6561 /* PantryUser.swift */; };
 		DBA6DD77E6630E9854C2A338 /* Pods_PantryTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7DE30444015D8485DD127850 /* Pods_PantryTests.framework */; };
 		F2D36C1A32595158BA162DD8 /* Pods_Pantry.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6AA3D9CEC266A5DCC8A969E2 /* Pods_Pantry.framework */; };
 /* End PBXBuildFile section */
@@ -65,7 +75,10 @@
 		A1491768CF420878121D4081 /* Pods-Pantry.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Pantry.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Pantry/Pods-Pantry.debug.xcconfig"; sourceTree = "<group>"; };
 		A6C80AD5EB148F289C458F95 /* Pods-PantryUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PantryUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-PantryUITests/Pods-PantryUITests.release.xcconfig"; sourceTree = "<group>"; };
 		A98AACACD3739C6E7DAA87EF /* Pods-PantryTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PantryTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-PantryTests/Pods-PantryTests.release.xcconfig"; sourceTree = "<group>"; };
+		D00C89C31EF62CA900992D19 /* UserDocuments.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDocuments.swift; sourceTree = "<group>"; };
 		D012B4531DB59759004A1D1F /* BarcodeDatabaseTestingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = BarcodeDatabaseTestingViewController.swift; path = Tests/BarcodeDatabaseTestingViewController.swift; sourceTree = "<group>"; };
+		D0133E7D1EECD8ED0098B056 /* Pantry.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Pantry.entitlements; sourceTree = "<group>"; };
+		D0133E7E1EECDFC80098B056 /* PantryAuthPickerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PantryAuthPickerViewController.swift; sourceTree = "<group>"; };
 		D02047071D78E8F300CB7C5D /* Pantry.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Pantry.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D020470A1D78E8F300CB7C5D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		D020470E1D78E8F300CB7C5D /* UPCScanViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UPCScanViewController.swift; sourceTree = "<group>"; };
@@ -84,19 +97,27 @@
 		D04477641DD75A98001FE0A2 /* PantryTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PantryTableViewCell.swift; sourceTree = "<group>"; };
 		D04477681DD79A79001FE0A2 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		D0485D961DD7E7C700BF7441 /* ItemDetailsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ItemDetailsViewController.swift; sourceTree = "<group>"; };
-		D05B60A21E79E31E002C6A13 /* FirebaseObject.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FirebaseObject.swift; sourceTree = "<group>"; };
+		D063DA6F1EEE7E6400DDD37A /* Pantry.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Pantry.swift; sourceTree = "<group>"; };
+		D06874D11EEC24E400532DDF /* SettingsAccountCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsAccountCell.swift; sourceTree = "<group>"; };
+		D06874D41EEC975200532DDF /* infoPrint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = infoPrint.swift; sourceTree = "<group>"; };
+		D07093A21EEC17D0005DFA56 /* SettingsSignInCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsSignInCell.swift; sourceTree = "<group>"; };
+		D07093A41EEC1A13005DFA56 /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		D081428D1EEBAC010016DE79 /* SimpleUPC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SimpleUPC.swift; sourceTree = "<group>"; };
 		D081428F1EEBAF980016DE79 /* Keys.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Keys.plist; sourceTree = "<group>"; };
 		D08142911EEBD07D0016DE79 /* PantryTabBarController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PantryTabBarController.swift; sourceTree = "<group>"; };
 		D08A02511E7686D300F2A486 /* GroceryListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GroceryListViewController.swift; sourceTree = "<group>"; };
 		D08A02531E7686E000F2A486 /* Groceries.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Groceries.storyboard; sourceTree = "<group>"; };
-		D08A02801E76A3A300F2A486 /* SettingsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		D08A02851E7740BD00F2A486 /* UIViewControllerExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIViewControllerExtension.swift; sourceTree = "<group>"; };
 		D08A02881E77596000F2A486 /* Recipes.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Recipes.storyboard; sourceTree = "<group>"; };
 		D08F65971E754137006D8C60 /* Pantry.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Pantry.storyboard; sourceTree = "<group>"; };
 		D0A7A0FE1E3ADFE900A9D6CA /* EditItemDetailsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditItemDetailsViewController.swift; sourceTree = "<group>"; };
 		D0B23DD01E7670960059DF72 /* KeyboardHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KeyboardHandler.swift; sourceTree = "<group>"; };
 		D0B23DD31E7680F30059DF72 /* Settings.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Settings.storyboard; sourceTree = "<group>"; };
+		D0B41BB41EF4E2AB001EDEA5 /* AddItem.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = AddItem.storyboard; sourceTree = "<group>"; };
+		D0D988761EF61DF500DE80D6 /* UPCScannerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UPCScannerView.swift; sourceTree = "<group>"; };
+		D0EAB15D1EF3AAE1003EBC56 /* PantryItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PantryItem.swift; sourceTree = "<group>"; };
+		D0FE18761EF50596007A6561 /* AccountViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountViewController.swift; sourceTree = "<group>"; };
+		D0FE18781EF511D3007A6561 /* PantryUser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PantryUser.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -150,6 +171,14 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		D00C89C21EF62C2400992D19 /* Stores */ = {
+			isa = PBXGroup;
+			children = (
+				D00C89C31EF62CA900992D19 /* UserDocuments.swift */,
+			);
+			path = Stores;
+			sourceTree = "<group>";
+		};
 		D02046FE1D78E8F300CB7C5D = {
 			isa = PBXGroup;
 			children = (
@@ -175,12 +204,15 @@
 		D02047091D78E8F300CB7C5D /* Pantry */ = {
 			isa = PBXGroup;
 			children = (
-				D03A047F1E7615EA00DC04C3 /* Library */,
-				D08F65941E75365D006D8C60 /* Application */,
+				D0D988731EF60F9C00DE80D6 /* Models */,
+				D0D988751EF6183F00DE80D6 /* Views */,
 				D08F65951E7536F8006D8C60 /* Controllers */,
+				D0D988741EF60FD700DE80D6 /* Helpers */,
+				D00C89C21EF62C2400992D19 /* Stores */,
+				D08F65941E75365D006D8C60 /* Application */,
 				D08F65961E753763006D8C60 /* Tests */,
+				D0133E7D1EECD8ED0098B056 /* Pantry.entitlements */,
 				D02047131D78E8F300CB7C5D /* Assets.xcassets */,
-				D02047151D78E8F300CB7C5D /* LaunchScreen.storyboard */,
 			);
 			path = Pantry;
 			sourceTree = "<group>";
@@ -203,32 +235,11 @@
 			path = PantryUITests;
 			sourceTree = "<group>";
 		};
-		D03A047F1E7615EA00DC04C3 /* Library */ = {
-			isa = PBXGroup;
-			children = (
-				D05B60A11E79E304002C6A13 /* Firebase */,
-				D03A04801E76160A00DC04C3 /* UPCitemdb.swift */,
-				D0B23DD01E7670960059DF72 /* KeyboardHandler.swift */,
-				D08A02851E7740BD00F2A486 /* UIViewControllerExtension.swift */,
-				D081428D1EEBAC010016DE79 /* SimpleUPC.swift */,
-			);
-			path = Library;
-			sourceTree = "<group>";
-		};
-		D05B60A11E79E304002C6A13 /* Firebase */ = {
-			isa = PBXGroup;
-			children = (
-				D05B60A21E79E31E002C6A13 /* FirebaseObject.swift */,
-			);
-			path = Firebase;
-			sourceTree = "<group>";
-		};
 		D08A02501E7686A300F2A486 /* Grocery List */ = {
 			isa = PBXGroup;
 			children = (
 				D08A02531E7686E000F2A486 /* Groceries.storyboard */,
 				D08A02511E7686D300F2A486 /* GroceryListViewController.swift */,
-				D08F659C1E7542B5006D8C60 /* AddItem */,
 			);
 			name = "Grocery List";
 			path = Grocery;
@@ -245,6 +256,7 @@
 		D08F65941E75365D006D8C60 /* Application */ = {
 			isa = PBXGroup;
 			children = (
+				D02047151D78E8F300CB7C5D /* LaunchScreen.storyboard */,
 				D02047181D78E8F300CB7C5D /* Info.plist */,
 				D04477681DD79A79001FE0A2 /* GoogleService-Info.plist */,
 				D020470A1D78E8F300CB7C5D /* AppDelegate.swift */,
@@ -258,6 +270,7 @@
 			children = (
 				D02047101D78E8F300CB7C5D /* Main.storyboard */,
 				D08142911EEBD07D0016DE79 /* PantryTabBarController.swift */,
+				D08F659C1E7542B5006D8C60 /* AddItem */,
 				D08F65991E7541C6006D8C60 /* Pantry */,
 				D08A02501E7686A300F2A486 /* Grocery List */,
 				D08A02871E77594300F2A486 /* Recipes */,
@@ -279,7 +292,6 @@
 			children = (
 				D08F65971E754137006D8C60 /* Pantry.storyboard */,
 				D04477621DD74989001FE0A2 /* MyPantryViewController.swift */,
-				D04477641DD75A98001FE0A2 /* PantryTableViewCell.swift */,
 				D0485D961DD7E7C700BF7441 /* ItemDetailsViewController.swift */,
 			);
 			path = Pantry;
@@ -288,20 +300,55 @@
 		D08F659C1E7542B5006D8C60 /* AddItem */ = {
 			isa = PBXGroup;
 			children = (
+				D0B41BB41EF4E2AB001EDEA5 /* AddItem.storyboard */,
 				D020470E1D78E8F300CB7C5D /* UPCScanViewController.swift */,
 				D0A7A0FE1E3ADFE900A9D6CA /* EditItemDetailsViewController.swift */,
 			);
-			name = AddItem;
-			path = ../AddItem;
+			path = AddItem;
 			sourceTree = "<group>";
 		};
 		D0B23DD21E7680B60059DF72 /* Settings */ = {
 			isa = PBXGroup;
 			children = (
 				D0B23DD31E7680F30059DF72 /* Settings.storyboard */,
-				D08A02801E76A3A300F2A486 /* SettingsViewController.swift */,
+				D07093A41EEC1A13005DFA56 /* SettingsViewController.swift */,
+				D0133E7E1EECDFC80098B056 /* PantryAuthPickerViewController.swift */,
+				D0FE18761EF50596007A6561 /* AccountViewController.swift */,
 			);
 			path = Settings;
+			sourceTree = "<group>";
+		};
+		D0D988731EF60F9C00DE80D6 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				D063DA6F1EEE7E6400DDD37A /* Pantry.swift */,
+				D0EAB15D1EF3AAE1003EBC56 /* PantryItem.swift */,
+				D0FE18781EF511D3007A6561 /* PantryUser.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		D0D988741EF60FD700DE80D6 /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				D06874D41EEC975200532DDF /* infoPrint.swift */,
+				D0B23DD01E7670960059DF72 /* KeyboardHandler.swift */,
+				D03A04801E76160A00DC04C3 /* UPCitemdb.swift */,
+				D081428D1EEBAC010016DE79 /* SimpleUPC.swift */,
+				D08A02851E7740BD00F2A486 /* UIViewControllerExtension.swift */,
+			);
+			path = Helpers;
+			sourceTree = "<group>";
+		};
+		D0D988751EF6183F00DE80D6 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				D04477641DD75A98001FE0A2 /* PantryTableViewCell.swift */,
+				D07093A21EEC17D0005DFA56 /* SettingsSignInCell.swift */,
+				D06874D11EEC24E400532DDF /* SettingsAccountCell.swift */,
+				D0D988761EF61DF500DE80D6 /* UPCScannerView.swift */,
+			);
+			path = Views;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -311,6 +358,8 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = D02047311D78E8F400CB7C5D /* Build configuration list for PBXNativeTarget "Pantry" */;
 			buildPhases = (
+				D06874D61EEC9DEB00532DDF /* Highlight TODOs, Warnings, Errors */,
+				D06874D31EEC93B800532DDF /* SwiftLint */,
 				1B2B862B84F5380B41B3C9D4 /* [CP] Check Pods Manifest.lock */,
 				D02047031D78E8F300CB7C5D /* Sources */,
 				D02047041D78E8F300CB7C5D /* Frameworks */,
@@ -384,6 +433,17 @@
 						DevelopmentTeam = 747EALPHEP;
 						LastSwiftMigration = 0900;
 						ProvisioningStyle = Automatic;
+						SystemCapabilities = {
+							com.apple.BackgroundModes = {
+								enabled = 1;
+							};
+							com.apple.Keychain = {
+								enabled = 1;
+							};
+							com.apple.Push = {
+								enabled = 1;
+							};
+						};
 					};
 					D020471C1D78E8F300CB7C5D = {
 						CreatedOnToolsVersion = 8.0;
@@ -431,6 +491,7 @@
 				D04477691DD79A79001FE0A2 /* GoogleService-Info.plist in Resources */,
 				D02047141D78E8F300CB7C5D /* Assets.xcassets in Resources */,
 				D02047121D78E8F300CB7C5D /* Main.storyboard in Resources */,
+				D0B41BB51EF4E2AB001EDEA5 /* AddItem.storyboard in Resources */,
 				D08A02541E7686E000F2A486 /* Groceries.storyboard in Resources */,
 				D08142901EEBAF980016DE79 /* Keys.plist in Resources */,
 				D08A02891E77596000F2A486 /* Recipes.storyboard in Resources */,
@@ -575,6 +636,34 @@
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-PantryUITests/Pods-PantryUITests-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
+		D06874D31EEC93B800532DDF /* SwiftLint */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = SwiftLint;
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "if which swiftlint >/dev/null; then\nswiftlint\nelse\necho \"warning: SwiftLint not installed, download from https://github.com/realm/SwiftLint\"\nfi";
+		};
+		D06874D61EEC9DEB00532DDF /* Highlight TODOs, Warnings, Errors */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Highlight TODOs, Warnings, Errors";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "TAGS=\"TODO:|FIXME:\"\nERRORTAG=\"ERROR:\"\nfind \"${SRCROOT}\" \\( -name \"*.h\" -or -name \"*.m\" -or -name \"*.swift\" -type f\\) -print0 | xargs -0 egrep --with-filename --line-number --only-matching \"($TAGS).*\\$|($ERRORTAG).*\\$\" | perl -p -e \"s/($TAGS)/ warning: \\$1/\" | perl -p -e \"s/($ERRORTAG)/ error: \\$1/\"\n";
+		};
 		F3B21FF7DFF817A73647F61A /* [CP] Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -597,19 +686,28 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D0D988771EF61DF500DE80D6 /* UPCScannerView.swift in Sources */,
 				D0A7A0FF1E3ADFE900A9D6CA /* EditItemDetailsViewController.swift in Sources */,
+				D0133E7F1EECDFC80098B056 /* PantryAuthPickerViewController.swift in Sources */,
 				D020470F1D78E8F300CB7C5D /* UPCScanViewController.swift in Sources */,
 				D081428E1EEBAC010016DE79 /* SimpleUPC.swift in Sources */,
 				D08142921EEBD07D0016DE79 /* PantryTabBarController.swift in Sources */,
 				D020470B1D78E8F300CB7C5D /* AppDelegate.swift in Sources */,
 				D012B4541DB59759004A1D1F /* BarcodeDatabaseTestingViewController.swift in Sources */,
 				D08A02521E7686D300F2A486 /* GroceryListViewController.swift in Sources */,
-				D05B60A31E79E31E002C6A13 /* FirebaseObject.swift in Sources */,
+				D0FE18791EF511D3007A6561 /* PantryUser.swift in Sources */,
+				D07093A51EEC1A13005DFA56 /* SettingsViewController.swift in Sources */,
+				D0FE18771EF50596007A6561 /* AccountViewController.swift in Sources */,
 				D0B23DD11E7670960059DF72 /* KeyboardHandler.swift in Sources */,
+				D06874D21EEC24E400532DDF /* SettingsAccountCell.swift in Sources */,
 				D04477631DD74989001FE0A2 /* MyPantryViewController.swift in Sources */,
+				D00C89C41EF62CA900992D19 /* UserDocuments.swift in Sources */,
+				D063DA701EEE7E6400DDD37A /* Pantry.swift in Sources */,
 				D08A02861E7740BD00F2A486 /* UIViewControllerExtension.swift in Sources */,
 				D0485D971DD7E7C700BF7441 /* ItemDetailsViewController.swift in Sources */,
-				D08A02811E76A3A300F2A486 /* SettingsViewController.swift in Sources */,
+				D07093A31EEC17D0005DFA56 /* SettingsSignInCell.swift in Sources */,
+				D0EAB15E1EF3AAE1003EBC56 /* PantryItem.swift in Sources */,
+				D06874D51EEC975200532DDF /* infoPrint.swift in Sources */,
 				D03A04811E76160A00DC04C3 /* UPCitemdb.swift in Sources */,
 				D04477651DD75A98001FE0A2 /* PantryTableViewCell.swift in Sources */,
 			);
@@ -784,12 +882,13 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = "$(inherited)";
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = Pantry/Pantry.entitlements;
 				DEVELOPMENT_TEAM = 747EALPHEP;
 				INFOPLIST_FILE = Pantry/Application/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = me.justinoroz.Pantry;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_SWIFT3_OBJC_INFERENCE = On;
+				SWIFT_SWIFT3_OBJC_INFERENCE = Off;
 				SWIFT_VERSION = 4.0;
 			};
 			name = Debug;
@@ -800,12 +899,13 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = "$(inherited)";
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = Pantry/Pantry.entitlements;
 				DEVELOPMENT_TEAM = 747EALPHEP;
 				INFOPLIST_FILE = Pantry/Application/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = me.justinoroz.Pantry;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_SWIFT3_OBJC_INFERENCE = On;
+				SWIFT_SWIFT3_OBJC_INFERENCE = Off;
 				SWIFT_VERSION = 4.0;
 			};
 			name = Release;
@@ -817,6 +917,7 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				DEVELOPMENT_TEAM = 747EALPHEP;
+				GCC_WARN_INHIBIT_ALL_WARNINGS = YES;
 				INFOPLIST_FILE = PantryTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = me.justinoroz.PantryTests;
@@ -834,6 +935,7 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				DEVELOPMENT_TEAM = 747EALPHEP;
+				GCC_WARN_INHIBIT_ALL_WARNINGS = YES;
 				INFOPLIST_FILE = PantryTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = me.justinoroz.PantryTests;
@@ -850,11 +952,12 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				DEVELOPMENT_TEAM = 747EALPHEP;
+				GCC_WARN_INHIBIT_ALL_WARNINGS = YES;
 				INFOPLIST_FILE = PantryUITests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = me.justinoroz.PantryUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_SWIFT3_OBJC_INFERENCE = On;
+				SWIFT_SWIFT3_OBJC_INFERENCE = Off;
 				SWIFT_VERSION = 4.0;
 				TEST_TARGET_NAME = Pantry;
 			};
@@ -866,11 +969,12 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				DEVELOPMENT_TEAM = 747EALPHEP;
+				GCC_WARN_INHIBIT_ALL_WARNINGS = YES;
 				INFOPLIST_FILE = PantryUITests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = me.justinoroz.PantryUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_SWIFT3_OBJC_INFERENCE = On;
+				SWIFT_SWIFT3_OBJC_INFERENCE = Off;
 				SWIFT_VERSION = 4.0;
 				TEST_TARGET_NAME = Pantry;
 			};

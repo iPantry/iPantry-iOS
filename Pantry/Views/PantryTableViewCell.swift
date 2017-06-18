@@ -18,10 +18,9 @@ class PantryTableViewCell: UITableViewCell {
         // Initialization code
     }
 
-	func setItemData(_ name: String, quantity: Int = 1, expirationDays: Int){
+	func setItemData(_ name: String, quantity: Int = 1, expirationDays: Int) {
 		nameLabel.text = name
 		countLabel.text = "\(quantity)"
-
 
 		switch expirationDays {
 		case -6 ..< -2:
@@ -54,5 +53,4 @@ class PantryTableViewCell: UITableViewCell {
 
         // Configure the view for the selected state
     }
-
 }
