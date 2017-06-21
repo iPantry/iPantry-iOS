@@ -17,7 +17,7 @@ final class UPCScannerView: UIView, UITextFieldDelegate {
 
 	var scanner: MTBBarcodeScanner?
 	let pscope = PermissionScope()
-	@IBOutlet weak var delegate: UPCScannerViewDelegate?
+	weak var delegate: UPCScannerViewDelegate?
 
 	@IBOutlet weak var scannerLoadingIndicator: UIActivityIndicatorView!
 	@IBOutlet weak var backgroundImage: UIImageView!
@@ -268,7 +268,7 @@ final class UPCScannerView: UIView, UITextFieldDelegate {
 	}
 
 	private func lookupUPC(upc: String) {
-		UPCitemdb.lookup(upc: upc, returned: { (data, error) in
+		UPCDB.current.lookup(by: upc, returned: { (data, error) in
 			guard error == nil else {
 				self.scannerLoading(done: true)
 				self.tryScanning()
@@ -276,15 +276,12 @@ final class UPCScannerView: UIView, UITextFieldDelegate {
 				return
 			}
 
-			var productInfo: [String: Any] = [:]
-
 			if data != nil {
-				productInfo += data!
+				self.delegate?.scanner(didFind: data!)
+			} else {
+				let productInfo: [String: AnyObject] = ["ean": upc as AnyObject]
+				self.delegate?.scanner(didFind: [UPCitemdbItem(productInfo)])
 			}
-
-			productInfo["ean"] = upc
-
-			self.delegate?.scanner(didFind: productInfo)
 		})
 	}
 
@@ -305,7 +302,7 @@ final class UPCScannerView: UIView, UITextFieldDelegate {
 
 }
 
-@objc protocol UPCScannerViewDelegate: class {
-	func scanner(didFind item: [String: Any])
+protocol UPCScannerViewDelegate: class {
+	func scanner(didFind items: [UPCDatabaseItem])
 	func backWasTapped()
 }

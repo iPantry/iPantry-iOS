@@ -127,17 +127,16 @@ class SettingsViewController: UITableViewController, FUIAuthDelegate {
 			if let state = PantryUser.current?.state, state == .loggedIn {
 				guard let cell = tableView.dequeueReusableCell(withIdentifier: "accountCell", for: indexPath) as? SettingsAccountCell
 					else {
-						log(.error, message: "Unable to dequeue accountCell")
+						fb_log(.error, message: "Unable to dequeue accountCell")
 						return UITableViewCell()
 				}
 				// Configure the cell...
-				cell.load()
 
 				return cell
 			} else {
 				guard let cell = tableView.dequeueReusableCell(withIdentifier: "signInCell", for: indexPath) as? SettingsSignInCell
 					else {
-						log(.error, message: "Unable to dequeue signInCell")
+						fb_log(.error, message: "Unable to dequeue signInCell")
 						return UITableViewCell()
 				}
 				// Configure the cell...

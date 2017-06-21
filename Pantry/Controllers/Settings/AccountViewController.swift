@@ -32,7 +32,7 @@ class AccountViewController: UIViewController {
 			try Auth.auth().signOut()
 			self.navigationController?.popViewController()
 		} catch {
-			log(.error, message: "Failed to sign out")
+			fb_log(.error, message: "Failed to sign out")
 		}
 	}
 

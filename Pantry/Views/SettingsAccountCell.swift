@@ -17,6 +17,10 @@ class SettingsAccountCell: UITableViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
+
+		if let user = PantryUser.current {
+			self.emailLabel.text = user.email
+		}
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
@@ -24,11 +28,5 @@ class SettingsAccountCell: UITableViewCell {
 
         // Configure the view for the selected state
     }
-
-	func load() {
-		if let user = Auth.auth().currentUser {
-			self.emailLabel.text = user.email
-		}
-	}
 
 }

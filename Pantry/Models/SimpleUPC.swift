@@ -9,13 +9,13 @@
 
 import Alamofire
 
-class SimpleUPC {
+final class SimpleUPC: UPCDatabase {
 
 	static private let host = "api.simpleupc.com"
 	static private let path = "/v1.php"
 	static private let auth = (UIApplication.shared.delegate as? AppDelegate)?.apikeys?["SimpleUPC"]
 
-	static func lookup(by barcode: String, returned: (([String: AnyObject]?, Error?) -> Void)?) {
+	static func lookup(by barcode: String, returned: (([UPCDatabaseItem]?, Error?) -> Void)?) {
 
 		guard let auth = self.auth else {
 			print("[ERROR]: No SimpleUPC API Key Found")
@@ -48,8 +48,35 @@ class SimpleUPC {
 
 							print("JSON: \(json)")
 
-							returned?(json, nil)
+							returned?([SimpleUPCItem(json)], nil)
 
 			}.resume()
 	}
+}
+
+struct SimpleUPCItem: UPCDatabaseItem {
+	subscript(index: String) -> AnyObject? {
+		return self.data[index]
+	}
+
+	init(_ json: [String : AnyObject]) {
+		self.data = json
+	}
+
+	private let data: [String : AnyObject]
+
+	var title: String?
+
+	var ean: String?
+
+	var description: String?
+
+	var brand: String?
+
+	var size: String?
+
+	var weight: String?
+
+	var imageURLs: [String]?
+
 }

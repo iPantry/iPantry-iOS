@@ -9,8 +9,8 @@
 /* Begin PBXBuildFile section */
 		4EF11D5722B664E82F7A06DC /* Pods_PantryUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 09606D778A58C5E9233AFED5 /* Pods_PantryUITests.framework */; };
 		D00C89C41EF62CA900992D19 /* UserDocuments.swift in Sources */ = {isa = PBXBuildFile; fileRef = D00C89C31EF62CA900992D19 /* UserDocuments.swift */; };
-		D012B4541DB59759004A1D1F /* BarcodeDatabaseTestingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D012B4531DB59759004A1D1F /* BarcodeDatabaseTestingViewController.swift */; };
 		D0133E7F1EECDFC80098B056 /* PantryAuthPickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0133E7E1EECDFC80098B056 /* PantryAuthPickerViewController.swift */; };
+		D01FD2EC1EF73D5F008DD04C /* UPCDatabase.swift in Sources */ = {isa = PBXBuildFile; fileRef = D01FD2EB1EF73D5F008DD04C /* UPCDatabase.swift */; };
 		D020470B1D78E8F300CB7C5D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D020470A1D78E8F300CB7C5D /* AppDelegate.swift */; };
 		D020470F1D78E8F300CB7C5D /* UPCScanViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D020470E1D78E8F300CB7C5D /* UPCScanViewController.swift */; };
 		D02047121D78E8F300CB7C5D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D02047101D78E8F300CB7C5D /* Main.storyboard */; };
@@ -75,10 +75,11 @@
 		A1491768CF420878121D4081 /* Pods-Pantry.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Pantry.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Pantry/Pods-Pantry.debug.xcconfig"; sourceTree = "<group>"; };
 		A6C80AD5EB148F289C458F95 /* Pods-PantryUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PantryUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-PantryUITests/Pods-PantryUITests.release.xcconfig"; sourceTree = "<group>"; };
 		A98AACACD3739C6E7DAA87EF /* Pods-PantryTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PantryTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-PantryTests/Pods-PantryTests.release.xcconfig"; sourceTree = "<group>"; };
+		D000C28E1EFA534C0025EE53 /* FireWrap.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FireWrap.framework; path = "../../../Library/Developer/Xcode/DerivedData/Pantry-fwlufzbstlgsolclcobotfjsffrn/Build/Products/Debug-iphonesimulator/FireWrap.framework"; sourceTree = "<group>"; };
 		D00C89C31EF62CA900992D19 /* UserDocuments.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDocuments.swift; sourceTree = "<group>"; };
-		D012B4531DB59759004A1D1F /* BarcodeDatabaseTestingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = BarcodeDatabaseTestingViewController.swift; path = Tests/BarcodeDatabaseTestingViewController.swift; sourceTree = "<group>"; };
 		D0133E7D1EECD8ED0098B056 /* Pantry.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Pantry.entitlements; sourceTree = "<group>"; };
 		D0133E7E1EECDFC80098B056 /* PantryAuthPickerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PantryAuthPickerViewController.swift; sourceTree = "<group>"; };
+		D01FD2EB1EF73D5F008DD04C /* UPCDatabase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UPCDatabase.swift; sourceTree = "<group>"; };
 		D02047071D78E8F300CB7C5D /* Pantry.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Pantry.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D020470A1D78E8F300CB7C5D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		D020470E1D78E8F300CB7C5D /* UPCScanViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UPCScanViewController.swift; sourceTree = "<group>"; };
@@ -164,6 +165,7 @@
 		AFEA49462A84A8F6EC3E40AB /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				D000C28E1EFA534C0025EE53 /* FireWrap.framework */,
 				6AA3D9CEC266A5DCC8A969E2 /* Pods_Pantry.framework */,
 				7DE30444015D8485DD127850 /* Pods_PantryTests.framework */,
 				09606D778A58C5E9233AFED5 /* Pods_PantryUITests.framework */,
@@ -210,7 +212,6 @@
 				D0D988741EF60FD700DE80D6 /* Helpers */,
 				D00C89C21EF62C2400992D19 /* Stores */,
 				D08F65941E75365D006D8C60 /* Application */,
-				D08F65961E753763006D8C60 /* Tests */,
 				D0133E7D1EECD8ED0098B056 /* Pantry.entitlements */,
 				D02047131D78E8F300CB7C5D /* Assets.xcassets */,
 			);
@@ -279,14 +280,6 @@
 			path = Controllers;
 			sourceTree = "<group>";
 		};
-		D08F65961E753763006D8C60 /* Tests */ = {
-			isa = PBXGroup;
-			children = (
-				D012B4531DB59759004A1D1F /* BarcodeDatabaseTestingViewController.swift */,
-			);
-			name = Tests;
-			sourceTree = "<group>";
-		};
 		D08F65991E7541C6006D8C60 /* Pantry */ = {
 			isa = PBXGroup;
 			children = (
@@ -321,6 +314,9 @@
 		D0D988731EF60F9C00DE80D6 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				D01FD2EB1EF73D5F008DD04C /* UPCDatabase.swift */,
+				D03A04801E76160A00DC04C3 /* UPCitemdb.swift */,
+				D081428D1EEBAC010016DE79 /* SimpleUPC.swift */,
 				D063DA6F1EEE7E6400DDD37A /* Pantry.swift */,
 				D0EAB15D1EF3AAE1003EBC56 /* PantryItem.swift */,
 				D0FE18781EF511D3007A6561 /* PantryUser.swift */,
@@ -333,8 +329,6 @@
 			children = (
 				D06874D41EEC975200532DDF /* infoPrint.swift */,
 				D0B23DD01E7670960059DF72 /* KeyboardHandler.swift */,
-				D03A04801E76160A00DC04C3 /* UPCitemdb.swift */,
-				D081428D1EEBAC010016DE79 /* SimpleUPC.swift */,
 				D08A02851E7740BD00F2A486 /* UIViewControllerExtension.swift */,
 			);
 			path = Helpers;
@@ -343,10 +337,10 @@
 		D0D988751EF6183F00DE80D6 /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				D04477641DD75A98001FE0A2 /* PantryTableViewCell.swift */,
 				D07093A21EEC17D0005DFA56 /* SettingsSignInCell.swift */,
 				D06874D11EEC24E400532DDF /* SettingsAccountCell.swift */,
 				D0D988761EF61DF500DE80D6 /* UPCScannerView.swift */,
+				D04477641DD75A98001FE0A2 /* PantryTableViewCell.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -358,9 +352,9 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = D02047311D78E8F400CB7C5D /* Build configuration list for PBXNativeTarget "Pantry" */;
 			buildPhases = (
+				1B2B862B84F5380B41B3C9D4 /* [CP] Check Pods Manifest.lock */,
 				D06874D61EEC9DEB00532DDF /* Highlight TODOs, Warnings, Errors */,
 				D06874D31EEC93B800532DDF /* SwiftLint */,
-				1B2B862B84F5380B41B3C9D4 /* [CP] Check Pods Manifest.lock */,
 				D02047031D78E8F300CB7C5D /* Sources */,
 				D02047041D78E8F300CB7C5D /* Frameworks */,
 				D02047051D78E8F300CB7C5D /* Resources */,
@@ -693,7 +687,6 @@
 				D081428E1EEBAC010016DE79 /* SimpleUPC.swift in Sources */,
 				D08142921EEBD07D0016DE79 /* PantryTabBarController.swift in Sources */,
 				D020470B1D78E8F300CB7C5D /* AppDelegate.swift in Sources */,
-				D012B4541DB59759004A1D1F /* BarcodeDatabaseTestingViewController.swift in Sources */,
 				D08A02521E7686D300F2A486 /* GroceryListViewController.swift in Sources */,
 				D0FE18791EF511D3007A6561 /* PantryUser.swift in Sources */,
 				D07093A51EEC1A13005DFA56 /* SettingsViewController.swift in Sources */,
@@ -705,6 +698,7 @@
 				D063DA701EEE7E6400DDD37A /* Pantry.swift in Sources */,
 				D08A02861E7740BD00F2A486 /* UIViewControllerExtension.swift in Sources */,
 				D0485D971DD7E7C700BF7441 /* ItemDetailsViewController.swift in Sources */,
+				D01FD2EC1EF73D5F008DD04C /* UPCDatabase.swift in Sources */,
 				D07093A31EEC17D0005DFA56 /* SettingsSignInCell.swift in Sources */,
 				D0EAB15E1EF3AAE1003EBC56 /* PantryItem.swift in Sources */,
 				D06874D51EEC975200532DDF /* infoPrint.swift in Sources */,

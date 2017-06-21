@@ -28,85 +28,7 @@ final class PantryUser {
 	private(set) var pantry: Pantry?
 
 	private init() {
-
-		self.authHandle = Auth.auth().addStateDidChangeListener { [unowned self] (auth, user) in
-			self.user = user
-			if self.userHandle != nil { // remove old observer
-				Database.database().reference().removeObserver(withHandle: self.userHandle!)
-				self.userHandle = nil
-			}
-
-			guard let user = user else {
-				log(.info, message: "No User logged in")
-				NotificationCenter.default.post(name: .pantryUserDoesNotExist, object: self)
-
-				Auth.auth().signInAnonymously { (_, error) in
-					if error != nil {
-						log(.error, message: "Could not log in anonymously: \(error!.localizedDescription)")
-						// TODO: Alert User, retry
-					}
-				}
-				return
-			}
-
-			self.userRef = Database.database().reference().child("users").child(user.uid)
-
-			self.userHandle = self.userRef!.observe(.value) { [unowned self] (snapshot) in
-				guard self.user != nil else {
-					// no user logged in, do nothing
-					return
-				}
-
-				guard snapshot.exists() else {
-					// create user dictionary
-					var userDict = [String: AnyObject]()
-					var childUpdates = [String: AnyObject]()
-
-					if self.user!.isAnonymous {
-						userDict["pantry"] = false as AnyObject
-						childUpdates["/users/\(self.user!.uid)"] = userDict as AnyObject
-					} else {
-						let pantryRef = Database.database().reference().child("pantries")
-						let newPantryId = pantryRef.childByAutoId().key
-
-						// add pantry ID to user
-						userDict["pantry"] = newPantryId as AnyObject
-						childUpdates["/users/\(self.user!.uid)"] = userDict as AnyObject
-
-						// create pantry
-						childUpdates["/pantries/\(newPantryId)/members"] = [self.user!.uid: true] as AnyObject
-					}
-
-					Database.database().reference().updateChildValues(childUpdates)
-					return
-				}
-
-				guard let userDict = snapshot.value as? [String: AnyObject] else {
-					log(.error, message: "User directory snapshot malformed: \(snapshot.value!)")
-					return
-				}
-
-				if let _ = userDict["pantry"] as? Bool {
-					self.pantry = Pantry(withId: PantryIdentifier(user.uid, indexedBy: .creator))
-				} else if let pantryId = userDict["pantry"] as? String {
-					self.pantry = Pantry(withId: PantryIdentifier(pantryId, indexedBy: .pantryId))
-				} else {
-					self.pantry = nil
-				}
-
-				self.userDict = userDict
-				NotificationCenter.default.post(name: .pantryUserWasUpdated, object: self)
-			}
-
-			NotificationCenter.default.post(name: .pantryUserExists, object: self)
-			if user.isAnonymous {
-				print("[INFO]: User is logged in anonymously")
-				NotificationCenter.default.post(name: .pantryUserIsAnonymous, object: self)
-			} else {
-				print("[INFO]: \(user.email ?? "Someone") is logged in")
-				NotificationCenter.default.post(name: .pantryUserIsLoggedIn, object: self)
-			}
-		}
+		self.authHandle = Auth.auth().addStateDidChangeListener(authStateChanged)
 	}
 
 	deinit {
@@ -115,6 +37,96 @@ final class PantryUser {
 		if self.userHandle != nil {
 			Database.database().reference().removeObserver(withHandle: self.userHandle!)
 		}
+	}
+
+	private func authStateChanged(auth: Auth, user: User?) {
+		self.user = user
+
+		if self.userHandle != nil { // remove old observer
+			Database.database().reference().removeObserver(withHandle: self.userHandle!)
+			self.userHandle = nil
+		}
+
+		guard let user = user else {
+			fb_log(.info, message: "No User logged in")
+			NotificationCenter.default.post(name: .pantryUserDoesNotExist, object: self)
+
+			Auth.auth().signInAnonymously { (_, error) in
+				if error != nil {
+					fb_log(.error, message: "Could not log in anonymously", args: ["error": error!.localizedDescription])
+					// TODO: Alert User, retry
+				}
+			}
+			return
+		}
+
+		NotificationCenter.default.post(name: .pantryUserExists, object: self)
+		if user.isAnonymous {
+			fb_log(.info, message: "User is logged in anonymously")
+			NotificationCenter.default.post(name: .pantryUserIsAnonymous, object: self)
+		}
+
+		guard !user.isAnonymous else {
+			// User is Anonymous
+			fb_log(.info, message: "User is logged in anonymously, user directory ignored")
+			NotificationCenter.default.post(name: .pantryUserIsAnonymous, object: self)
+			return
+		}
+
+		self.userRef = Database.database().reference().child("users").child(user.uid)
+
+		self.userHandle = self.userRef!.observe(.value, with: userDirChanged)
+
+		fb_log(.info, message: "A User is logged in", args: ["email": user.email ?? "nil"])
+		NotificationCenter.default.post(name: .pantryUserIsLoggedIn, object: self)
+
+	}
+
+	private func userDirChanged(snapshot: DataSnapshot) {
+		guard self.user != nil else {
+			// no user logged in, do nothing
+			return
+		}
+
+		guard snapshot.exists() else {
+			// create user dictionary
+			var userDict = [String: AnyObject]()
+			var childUpdates = [String: AnyObject]()
+
+			if self.user!.isAnonymous {
+				userDict["pantry"] = false as AnyObject
+				childUpdates["/users/\(self.user!.uid)"] = userDict as AnyObject
+			} else {
+				let pantryRef = Database.database().reference().child("pantries")
+				let newPantryId = pantryRef.childByAutoId().key
+
+				// add pantry ID to user
+				userDict["pantry"] = newPantryId as AnyObject
+				childUpdates["/users/\(self.user!.uid)"] = userDict as AnyObject
+
+				// create pantry
+				childUpdates["/pantries/\(newPantryId)/members"] = [self.user!.uid: true] as AnyObject
+			}
+
+			Database.database().reference().updateChildValues(childUpdates)
+			return
+		}
+
+		guard let userDict = snapshot.value as? [String: AnyObject] else {
+			fb_log(.error, message: "User directory snapshot malformed", args: ["snapshot": snapshot.description])
+			return
+		}
+
+		if let _ = userDict["pantry"] as? Bool {
+			self.pantry = Pantry(withId: PantryIdentifier(self.user!.uid, indexedBy: .creator))
+		} else if let pantryId = userDict["pantry"] as? String {
+			self.pantry = Pantry(withId: PantryIdentifier(pantryId, indexedBy: .pantryId))
+		} else {
+			self.pantry = nil
+		}
+
+		self.userDict = userDict
+		NotificationCenter.default.post(name: .pantryUserWasUpdated, object: self)
 	}
 
 	var state: PantryUserState? {

@@ -61,8 +61,8 @@ class UPCScanViewController: UIViewController, UPCScannerViewDelegate {
 
 	// MARK: - ScannerDelegate
 
-	func scanner(didFind item: [String : Any]) {
-		self.performSegue(withIdentifier: "editDetails", sender: item)
+	func scanner(didFind items: [UPCDatabaseItem]) {
+		self.performSegue(withIdentifier: "editDetails", sender: items)
 	}
 
 	func backWasTapped() {
@@ -77,10 +77,9 @@ class UPCScanViewController: UIViewController, UPCScannerViewDelegate {
 		switch segue.identifier! {
 		case "editDetails":
 			guard let destination = segue.destination as? EditItemDetailsViewController,
-			let data = sender as? [String: AnyObject] else { return }
+			let data = sender as? [UPCDatabaseItem] else { return }
 
-			destination.data = data
-			destination.ean = data["ean"] as? String!
+			destination.items = data
 
 		default:
 			break
@@ -88,4 +87,3 @@ class UPCScanViewController: UIViewController, UPCScannerViewDelegate {
 	}
 
 }
-

@@ -36,9 +36,7 @@ class MyPantryViewController: UITableViewController {
 	}
 
 	@objc func pantry (notification: Notification) {
-		DispatchQueue.main.async {
-			self.tableView.reloadData()
-		}
+		self.tableView.reloadData()
 	}
 
     override func didReceiveMemoryWarning() {
@@ -57,7 +55,8 @@ class MyPantryViewController: UITableViewController {
     }
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-		guard let cell = tableView.dequeueReusableCell(withIdentifier: "itemCell", for: indexPath) as? PantryTableViewCell
+		guard let cell = tableView.dequeueReusableCell(withIdentifier: "itemCell", for: indexPath) as? PantryTableViewCell,
+		let item = PantryUser.current?.pantry?.list[indexPath.row]
 			else {
 			// TODO: Return an Error Cell
 			return UITableViewCell()
@@ -65,7 +64,7 @@ class MyPantryViewController: UITableViewController {
 
         // Configure the cell...
 
-		cell.setItemData("Hot Pockets", quantity: 10, expirationDays: -7)
+		cell.configure(from: item)
 
         return cell
     }

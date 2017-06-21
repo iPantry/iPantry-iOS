@@ -18,32 +18,17 @@ class EditItemDetailsViewController: UIViewController {
 	@IBOutlet weak var itemTitle: UITextField!
 	@IBOutlet weak var itemImage: UIImageView!
 
-	var data: [String: Any]!
-	var items: [[String: Any]] = []
-	var selectedItem: [String: Any]?
+	var items: [UPCDatabaseItem]!
+	var selectedItem: UPCDatabaseItem?
 	var ref: DatabaseReference!
 	var ean: String!
-	var customItem: [String: Any] = [:]
+	var customItem: [String: AnyObject] = [:]
 
 	override func viewDidLoad() {
 		super.viewDidLoad()
 		ref = Database.database().reference()
 
-		self.customItem["ean"] = self.ean
-
-		guard let items = data["items"] as? [[String: AnyObject]] else {
-			// TODO: Error Handle
-			// Improper return object
-			return
-		}
-
-		self.items = items
-
-		guard !self.items.isEmpty else {
-			// TODO: Error Handle
-			// no items found
-			return
-		}
+		self.customItem["ean"] = self.items[0].ean as AnyObject
 
 		if items.count > 1 {
 			print("[ALERT] More than one item found with ean")
@@ -51,9 +36,9 @@ class EditItemDetailsViewController: UIViewController {
 		} else {
 			self.selectedItem = items[0]
 
-			self.itemTitle.text = self.selectedItem!["title"] as? String
+			self.itemTitle.text = self.selectedItem?.title
 
-			if let imageURLs = self.selectedItem!["images"] as? [String] {
+			if let imageURLs = self.selectedItem?.imageURLs {
 				downloadImages(from: imageURLs)
 			}
 		}
@@ -86,6 +71,8 @@ class EditItemDetailsViewController: UIViewController {
 
 			}).resume()
 
+			self.itemImage.startAnimating()
+
 		}
 
 	}
@@ -99,27 +86,27 @@ class EditItemDetailsViewController: UIViewController {
 		if selectedItem == nil {
 			// save all fields for fully custom item
 
-			self.customItem["title"] = self.itemTitle.text
+			self.customItem["title"] = self.itemTitle.text as AnyObject
 		} else {
 			// only save modified fields for found items
 
-			if self.itemTitle.text != selectedItem!["title"] as? String {
-				self.customItem["title"] = self.itemTitle.text
+			if self.itemTitle.text != selectedItem!.title {
+				self.customItem["title"] = self.itemTitle.text as AnyObject
 			}
 		}
 
 		let itemRef = self.ref.child("items")
 
-		self.customItem["createdBy"] = user.uid
+		self.customItem["createdBy"] = user.uid as AnyObject
 
 		if user.isAnonymous {
-			self.customItem["pantry"] = false
+			self.customItem["pantry"] = false as AnyObject
 			print("Saving: \(self.customItem.description)")
 			itemRef.childByAutoId().setValue(customItem)
 			let _ = self.navigationController?.popToRootViewController(animated: true)
-		} else {
+		} else { // TODO: Use PantryUser
 			ref.child("users").child(user.uid).child("pantry").observeSingleEvent(of: .value, with: { (snapshot) in
-				self.customItem["pantry"] = snapshot.value
+				self.customItem["pantry"] = snapshot.value as AnyObject
 				print("Saving: \(self.customItem.description)")
 				itemRef.childByAutoId().setValue(self.customItem)
 				let _ = self.navigationController?.popToRootViewController(animated: true)

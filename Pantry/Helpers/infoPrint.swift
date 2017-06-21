@@ -8,24 +8,54 @@
 
 import Foundation
 import FirebaseAnalytics
+import os.log
 
-enum PrintType: String {
-	case error = "ERROR"
-	case info = "INFO"
-	case critical = "CRITICAL"
+func print(_ type: OSLogType, message: StaticString, args: CVarArg...) {
+	os_log(message, log: .default, type: type, args)
 }
 
-func print(_ type: PrintType, message items: Any...) {
-	print("[\(type.rawValue)]:", items)
-}
+func fb_log(_ type: OSLogType, message: StaticString, file: StaticString = #file, line: UInt = #line, args: CVarArg...) {
 
-func log(_ type: PrintType, message items: Any...) {
+	var info = [NSString]()
+	for arg in args {
+		if let readable = arg as? NSString {
+			info.append(readable)
+		}
+	}
 
-	if .critical == type || .error == type {
-		Analytics.logEvent(type.rawValue, parameters: [
-			"message": items as [Any]
+	var filename: String = file.description
+
+	if let name = file.description.components(separatedBy: "/").last {
+		filename = name
+	}
+
+	if .fault == type || .error == type {
+		Analytics.logEvent(type.description, parameters: [
+			"message": message.description as NSString,
+			"args": info,
+			"location": ["file": filename, "line": line]
 			])
 	}
 
-	print("[\(type.rawValue)]:", items as [Any])
+	os_log("|%@, %d| [%@]: %@ - %@", log: .default, type: type,
+	       filename, line, type.description, message.description, args)
+}
+
+extension OSLogType: CustomStringConvertible {
+	public var description: String {
+		switch self {
+		case .error:
+			return "Error"
+		case .info:
+			return "Info"
+		case .default:
+			return "Default"
+		case .debug:
+			return "Debug"
+		case .fault:
+			return "Fault"
+		default:
+			return "Unknown"
+		}
+	}
 }

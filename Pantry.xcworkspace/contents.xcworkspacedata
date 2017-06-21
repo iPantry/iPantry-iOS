@@ -1,10 +1,27 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Workspace
    version = "1.0">
-   <FileRef
-      location = "group:Pantry.xcodeproj">
-   </FileRef>
-   <FileRef
-      location = "group:Pods/Pods.xcodeproj">
-   </FileRef>
+   <Group
+      location = "container:"
+      name = "FireWrap">
+      <FileRef
+         location = "group:../FireWrap/FireWrap.xcodeproj">
+      </FileRef>
+      <FileRef
+         location = "group:../FireWrap/Pods/Pods.xcodeproj">
+      </FileRef>
+   </Group>
+   <Group
+      location = "container:"
+      name = "Pantry">
+      <FileRef
+         location = "group:PantryPlayground.playground">
+      </FileRef>
+      <FileRef
+         location = "group:Pantry.xcodeproj">
+      </FileRef>
+      <FileRef
+         location = "group:Pods/Pods.xcodeproj">
+      </FileRef>
+   </Group>
 </Workspace>

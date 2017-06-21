@@ -9,84 +9,98 @@
 import Foundation
 import Firebase
 import FirebaseAuth
+import FireWrap
 
 final class Pantry {
 
 	init(withId pantryId: PantryIdentifier) {
 		//setup firebase listener
-		log(.info, message: "Creating Pantry object for id \(pantryId.value), keyed by \(pantryId.type.rawValue)")
+		fb_log(.debug, message: "Creating Pantry object", args: [pantryId.type.rawValue: pantryId.value])
 
-		let ref = Database.database().reference()
 		self.pantryId = pantryId
 
-		// check if user has pantry specified
+		let ref = Database.database().reference()
 
 		if self.pantryId.type == .pantryId { //only check for pantry members if user is not anonymous
 			let usersRef = ref.child("pantries").child(self.pantryId.value)
 
-			let usersHandle = usersRef.observe(DataEventType.value, with: { [unowned self] (snapshot) in
-
-				guard snapshot.exists() else {
-					log(.error, message: "Pantry directory missing")
-					// TODO: Create the directory
-					return
-				}
-
-				// update User list and invited list
-				guard let pantryDict = snapshot.value as? [String: AnyObject] else {
-						log(.error, message: "User data snapshot invalid: \(String(describing: snapshot.value))")
-						return
-				}
-
-				guard let userDict = pantryDict["members"] as? [String: Bool] else {
-					log(.error, message: "Pantry missing required member information")
-					return
-				}
-
-				self.memberIds.removeAll()
-				for member in userDict.keys {
-					self.memberIds.insert(member)
-				}
-				NotificationCenter.default.post(name: .pantryMembersWereUpdated, object: self)
-
-				self.invitedIds.removeAll()
-				if let invitedDict = pantryDict["invited"] as? [String: Bool] {
-					for invited in invitedDict.keys {
-						self.invitedIds.insert(invited)
-					}
-					NotificationCenter.default.post(name: .pantryInvitedWereUpdated, object: self)
-				}
-
-				print(snapshot)
-
-			})
-
+			let usersHandle = usersRef.observe(DataEventType.value, with: pantryModified)
 			self.observerHandles.insert(usersHandle)
 		}
 
 		let pantryRef = ref.child("items").queryOrdered(byChild: pantryId.type.rawValue).queryEqual(toValue: pantryId.value)
 
-		let pantryHandle = pantryRef.observe(.value, with: { [unowned self] (snapshot) in
-			self.list = []		// clear list
+		let childAddedHandle = pantryRef.observe(.childAdded, with: itemAdded)
+		self.observerHandles.insert(childAddedHandle)
+	}
 
-			// update list
-			guard let pantryDict = snapshot.value as? [String: AnyObject] else {
-				log(.error, message: "Pantry data snapshot invalid: \(String(describing: snapshot.value))")
-				return
+	private func pantryModified(snapshot: DataSnapshot) {
+		guard snapshot.exists() else {
+			fb_log(.error, message: "Pantry directory missing")
+
+			// Create the directory
+			if let uid = PantryUser.current?.uid {
+				fb_log(.info, message: "Creating Pantry directory")
+				let newData: FireDictionary = [uid: true]
+				Database.database().reference().child("/pantries/\(self.pantryId)/members").setValue(newData.uploadable)
+			}
+			return
+		}
+
+		// update User list and invited list
+		guard let pantry = FireDictionary(snapshot.value) else {
+			fb_log(.error, message: "User data snapshot invalid", args: ["snapshot": snapshot.description])
+			return
+		}
+
+		guard let userDict = pantry["members"] as? FireDictionary else {
+			self.memberIds = Set<String>()
+			fb_log(.error, message: "Pantry missing required member information")
+			return
+		}
+
+		self.memberIds = Set<String>(userDict.keys)
+		NotificationCenter.default.post(name: .pantryMembersWereUpdated, object: self)
+
+		if let invited = pantry["invited"] as? FireDictionary {
+			self.invitedIds = Set<String>(invited.keys)
+			NotificationCenter.default.post(name: .pantryInvitedWereUpdated, object: self)
+		} else {
+			self.invitedIds = Set<String>()
+		}
+
+		print(snapshot)
+	}
+
+	private func itemAdded(snapshot: DataSnapshot) {
+
+		// update list
+		guard let item = FireDictionary(snapshot.value),
+			let ean = item["ean"] as? String else {
+			fb_log(.error, message: "Pantry data snapshot invalid", args: ["snapshot": snapshot.description])
+			return
+		}
+
+		UPCDB.current.lookup(by: ean) { (upcItems, error) in
+			//TODO: Pull correct item from UPC DB if multiple
+			guard error == nil,
+				upcItems != nil else {
+					fb_log(.error, message: "UPC Database lookup returned error",
+					       args: ["error": error?.localizedDescription ?? "upcData is nil"])
+					//UPCDB.current.lookup(by: self.ean!, returned: upcDataReturned)
+					return
 			}
 
-			log(.info, message: "\(pantryDict.count) items found in pantry")
-			for item in pantryDict {
-				if let itemDict = item.value as? [String: AnyObject] {
-					self.list.append(PantryItem(itemDict))
-				}
+			if let newItemObject = PantryItem(snapshot.key, item, upcItems![0]) {
+				self.list.append(newItemObject)
+				fb_log(.debug, message: "Item added pantry")
+			} else {
+				fb_log(.error, message: "Failed to add item to pantry")
 			}
 
-			print(snapshot, " translated to ", self.list.count, " objects")
-			NotificationCenter.default.post(name: .pantryListWasUpdated, object: self)
-		})
-
-		self.observerHandles.insert(pantryHandle)
+		}
+		
+		print(snapshot)
 	}
 
 	deinit {
@@ -103,6 +117,14 @@ final class Pantry {
 	private var observerHandles = Set<UInt>()
 
 	private(set) var list: [PantryItem] = []
+
+	private func save() {
+
+	}
+
+	private func load() {
+
+	}
 
 }
 

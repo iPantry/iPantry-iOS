@@ -18,34 +18,48 @@ class PantryTableViewCell: UITableViewCell {
         // Initialization code
     }
 
-	func setItemData(_ name: String, quantity: Int = 1, expirationDays: Int) {
+	func configure(from pantryItem: PantryItem) {
+		self.nameLabel.text = pantryItem.title
+		self.countLabel.text = String(describing: pantryItem.quantity ?? 1)
+		self.expirationLabel.text = getExpirationDescription(days: pantryItem.expirationEstimate)
+	}
+
+	private func getExpirationDescription(days: Int?) -> String {
+		guard let days = days else {
+			return "?"
+		}
+
+		switch days {
+		case -6 ..< -2:
+			return "\(days) Days Ago"
+		case -1:
+			return "Yesterday"
+		case 0:
+			return "Today"
+		case 1:
+			return "\(days) Day"
+		case 2..<7:
+			return "\(days) Days"
+		case 7..<14:
+			return "\(days/7) Week"
+		case 14..<365:
+			return "\(days/7) Weeks"
+		case 365..<730:
+			return "\(days/7) Year"
+		default:
+			if days > 0 {
+				return "\(days/365) Years"
+			} else {
+				return "Over a week ago"
+			}
+		}
+
+	}
+
+	private func setItemData(_ name: String, quantity: Int = 1, expirationDays: Int) {
 		nameLabel.text = name
 		countLabel.text = "\(quantity)"
 
-		switch expirationDays {
-		case -6 ..< -2:
-			expirationLabel.text = "\(expirationDays) Days Ago"
-		case -1:
-			expirationLabel.text = "Yesterday"
-		case 0:
-			expirationLabel.text = "Today"
-		case 1:
-			expirationLabel.text = "\(expirationDays) Day"
-		case 2..<7:
-			expirationLabel.text = "\(expirationDays) Days"
-		case 7..<14:
-			expirationLabel.text = "\(expirationDays/7) Week"
-		case 14..<365:
-			expirationLabel.text = "\(expirationDays/7) Weeks"
-		case 365..<730:
-			expirationLabel.text = "\(expirationDays/7) Year"
-		default:
-			if expirationDays > 0 {
-				expirationLabel.text = "\(expirationDays/365) Years"
-			} else {
-				expirationLabel.text = "Over a week ago"
-			}
-		}
 	}
 
     override func setSelected(_ selected: Bool, animated: Bool) {
