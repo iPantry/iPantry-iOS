@@ -72,11 +72,11 @@ struct UPCitemdbItem: UPCDatabaseItem {
 	var brand: String? {
 		return data["brand"] as? String
 	}
-	
+
 	var size: String? {
 		return data["size"] as? String
 	}
-	
+
 	var weight: String? {
 		return data["weight"] as? String
 	}

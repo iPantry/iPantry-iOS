@@ -72,11 +72,11 @@ struct SimpleUPCItem: UPCDatabaseItem {
 	var description: String?
 
 	var brand: String?
-	
+
 	var size: String?
-	
+
 	var weight: String?
-	
+
 	var imageURLs: [String]?
-	
+
 }

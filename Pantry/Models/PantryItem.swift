@@ -18,26 +18,22 @@ struct PantryItem: Hashable {
 		if left.identifier != nil || right.identifier != nil {
 			return left.identifier == right.identifier
 		} else {
-			return right.upcData.ean == left.upcData.ean
+			return right.upcData?.ean == left.upcData?.ean
 		}
 	}
 
 	static func != (left: PantryItem, right: PantryItem) -> Bool {
-		if left.identifier != nil || right.identifier != nil {
-			return left.identifier != right.identifier
-		} else {
-			return right.upcData.ean != left.upcData.ean
-		}
+		return !(left == right)
 	}
 
 	subscript(index: String) -> FireValue? {
 		get {
-			return modified[index] ?? itemDict[index] ?? upcData[index] as? FireValue
+			return modified[index] ?? itemDict[index] ?? upcData?[index] as? FireValue
 		}
 		set(newValue) { //can only modify string: values
 
 			// if neither places have data, add it
-			guard (upcData[index] == nil) && (modified[index] == nil) else {
+			guard (upcData?[index] == nil) && (modified[index] == nil) else {
 				modified[index] = newValue
 				return
 			}
@@ -46,7 +42,7 @@ struct PantryItem: Hashable {
 				return
 			}
 
-			if let upc = upcData[index] as? String {
+			if let upc = upcData?[index] as? String {
 				if upc == new {
 					// Clear item detail newValue is same
 					modified[index] = nil
@@ -57,13 +53,12 @@ struct PantryItem: Hashable {
 					}
 				}
 			}
-
 		}
 	}
 
 	// create new item to load to firebase
-	init?(_ creator: String, _ upcData: UPCDatabaseItem) {
-		guard let ean = upcData["ean"] as? String else {
+	init?(_ creator: String, _ upcData: UPCDatabaseItem?) {
+		guard let ean = upcData?["ean"] as? String else {
 			fb_log(.error, message: "Failed to create new PantryItem, no EAN")
 			return nil
 		}
@@ -77,8 +72,8 @@ struct PantryItem: Hashable {
 		// move this init to small temporary class for creating new Items, Idenitifier should be a requirement
 	}
 
-	// init from firebase
-	init?(_ itemId: String, _ itemDict: FireDictionary, _ upcData: UPCDatabaseItem) {
+	// init from firebase and possible upcdb data
+	init?(_ itemId: String, _ itemDict: FireDictionary, _ upcData: UPCDatabaseItem?) {
 		guard let ean = itemDict["ean"] as? String,
 			let creator = itemDict["creator"] as? String else {
 				fb_log(.error, message: "New Pantry Item failed with ID", args: ["id": itemId])
@@ -92,11 +87,10 @@ struct PantryItem: Hashable {
 		self.upcData = upcData
 	}
 
-
 	///
 	private(set) var identifier: String?
 	private var itemDict: FireDictionary
-	private let upcData: UPCDatabaseItem
+	private let upcData: UPCDatabaseItem?
 	private var modified = FireDictionary()
 
 	mutating func update(_ itemDict: FireDictionary) {
@@ -109,7 +103,7 @@ struct PantryItem: Hashable {
 	var title: String? {
 		if let userItem = self.itemDict["title"] as? String {
 			return userItem
-		} else if let upcItem = self.upcData.title {
+		} else if let upcItem = self.upcData?.title {
 			return upcItem
 		} else {
 			return nil
@@ -135,7 +129,7 @@ struct PantryItem: Hashable {
 		get {
 			if let userItem = self.itemDict["weight"] as? String {
 				return userItem
-			} else if let upcItem = self.upcData.weight {
+			} else if let upcItem = self.upcData?.weight {
 				return upcItem
 			} else {
 				return nil
@@ -150,7 +144,7 @@ struct PantryItem: Hashable {
 		get {
 			if let userItem = self.itemDict["size"] as? String {
 				return userItem
-			} else if let upcItem = self.upcData.size {
+			} else if let upcItem = self.upcData?.size {
 				return upcItem
 			} else {
 				return nil

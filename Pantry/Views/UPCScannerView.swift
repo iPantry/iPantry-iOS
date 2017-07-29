@@ -273,14 +273,16 @@ final class UPCScannerView: UIView, UITextFieldDelegate {
 
 	private func lookupUPC(upc: String) {
 		UPCDB.current.lookup(by: upc, returned: { (data, error) in
-			guard error == nil else {
-				self.scannerLoading(done: true)
-				self.tryScanning()
-				// TODO: Alert User, begin scanning again when dismissed
-				return
+			guard error == nil,
+				data != nil
+				else {
+					self.scannerLoading(done: true)
+					self.tryScanning()
+					// TODO: Alert User, begin scanning again when dismissed
+					return
 			}
 
-			if data != nil {
+			if data!.count > 0 {
 				self.delegate?.scanner(didFind: data!)
 			} else {
 				let productInfo: [String: AnyObject] = ["ean": upc as AnyObject]

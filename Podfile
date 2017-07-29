@@ -8,7 +8,7 @@ target 'Pantry' do
 
   # Pods for Pantry
 	pod 'MTBBarcodeScanner'
-	pod 'Alamofire', '~> 4.0'
+	pod 'Alamofire', '~> 4.4'
 	pod 'AlamofireImage', '~> 3.2'
 	pod 'ChameleonFramework/Swift', :git => 'https://github.com/ViccAlexander/Chameleon.git'
 	pod 'PermissionScope'

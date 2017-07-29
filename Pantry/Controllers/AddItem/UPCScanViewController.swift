@@ -85,5 +85,4 @@ class UPCScanViewController: UIViewController, UPCScannerViewDelegate {
 			break
 		}
 	}
-	
 }

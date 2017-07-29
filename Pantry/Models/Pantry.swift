@@ -90,7 +90,7 @@ final class Pantry {
 					return
 			}
 
-			if let newItemObject = PantryItem(snapshot.key, item, upcItems![0]) {
+			if let newItemObject = PantryItem(snapshot.key, item, upcItems?[0]) {
 				self.list.append(newItemObject)
 				fb_log(.debug, message: "Item added to pantry")
 				NotificationCenter.default.post(name: .pantryListWasUpdated, object: self)
