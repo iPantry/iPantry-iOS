@@ -99,7 +99,7 @@ final class Pantry {
 			}
 
 		}
-		
+
 		print(snapshot)
 	}
 

@@ -11,9 +11,8 @@ import FireWrap
 
 struct PantryItem: Hashable {
 	var hashValue: Int {
-		return self.identifier.hash
+		return self.identifier!.hash
 	}
-	
 
 	static func == (left: PantryItem, right: PantryItem) -> Bool {
 
@@ -94,7 +93,9 @@ struct PantryItem: Hashable {
 		self.upcData = upcData
 	}
 
-	private(set) var identifier: String
+    
+    ///
+	private(set) var identifier: String?
 	private var itemDict: FireDictionary
 	private let upcData: UPCDatabaseItem
 	private var modified = FireDictionary()

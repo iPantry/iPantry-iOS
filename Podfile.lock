@@ -1,7 +1,8 @@
 PODS:
-  - Alamofire (4.4.0)
+  - Alamofire (4.5.0)
   - AlamofireImage (3.2.0):
     - Alamofire (~> 4.1)
+  - BarcodeScanner (2.1.1)
   - Bolts (1.8.4):
     - Bolts/AppLinks (= 1.8.4)
     - Bolts/Tasks (= 1.8.4)
@@ -12,36 +13,36 @@ PODS:
   - ChameleonFramework/Default (2.1.0)
   - ChameleonFramework/Swift (2.1.0):
     - ChameleonFramework/Default
-  - DeviceKit (1.0.1)
-  - FBSDKCoreKit (4.23.0):
+  - DeviceKit (1.2.3)
+  - FBSDKCoreKit (4.24.0):
     - Bolts (~> 1.7)
-  - FBSDKLoginKit (4.23.0):
+  - FBSDKLoginKit (4.24.0):
     - FBSDKCoreKit
-  - Firebase/Auth (4.0.2):
+  - Firebase/Auth (4.0.4):
     - Firebase/Core
     - FirebaseAuth (= 4.0.0)
-  - Firebase/Core (4.0.2):
-    - FirebaseAnalytics (= 4.0.1)
-    - FirebaseCore (= 4.0.2)
-  - Firebase/Crash (4.0.2):
+  - Firebase/Core (4.0.4):
+    - FirebaseAnalytics (= 4.0.2)
+    - FirebaseCore (= 4.0.4)
+  - Firebase/Crash (4.0.4):
     - Firebase/Core
     - FirebaseCrash (= 2.0.0)
-  - Firebase/Database (4.0.2):
+  - Firebase/Database (4.0.4):
     - Firebase/Core
     - FirebaseDatabase (= 4.0.0)
-  - Firebase/DynamicLinks (4.0.2):
+  - Firebase/DynamicLinks (4.0.4):
     - Firebase/Core
     - FirebaseDynamicLinks (= 2.0.0)
-  - Firebase/Invites (4.0.2):
+  - Firebase/Invites (4.0.4):
     - Firebase/Core
     - FirebaseInvites (= 2.0.0)
-  - Firebase/Messaging (4.0.2):
+  - Firebase/Messaging (4.0.4):
     - Firebase/Core
     - FirebaseMessaging (= 2.0.0)
-  - Firebase/Storage (4.0.2):
+  - Firebase/Storage (4.0.4):
     - Firebase/Core
     - FirebaseStorage (= 2.0.0)
-  - FirebaseAnalytics (4.0.1):
+  - FirebaseAnalytics (4.0.2):
     - FirebaseCore (~> 4.0)
     - FirebaseInstanceID (~> 2.0)
     - GoogleToolboxForMac/NSData+zlib (~> 2.1)
@@ -49,8 +50,9 @@ PODS:
     - FirebaseAnalytics (~> 4.0)
     - GoogleToolboxForMac/NSDictionary+URLArguments (~> 2.1)
     - GTMSessionFetcher/Core (~> 1.1)
-  - FirebaseCore (4.0.2):
+  - FirebaseCore (4.0.4):
     - GoogleToolboxForMac/NSData+zlib (~> 2.1)
+    - nanopb (~> 0.3)
   - FirebaseCrash (2.0.0):
     - FirebaseAnalytics (~> 4.0)
     - FirebaseInstanceID (~> 2.0)
@@ -87,17 +89,17 @@ PODS:
     - FirebaseAnalytics (~> 4.0)
     - FirebaseCore (~> 4.0)
     - GTMSessionFetcher/Core (~> 1.1)
-  - FirebaseUI/Auth (4.0.0):
+  - FirebaseUI/Auth (4.1.1):
     - Firebase/Auth
-  - FirebaseUI/Database (4.0.0):
+  - FirebaseUI/Database (4.1.1):
     - Firebase/Database
-  - FirebaseUI/Facebook (4.0.0):
+  - FirebaseUI/Facebook (4.1.1):
     - FBSDKLoginKit (~> 4.0)
     - FirebaseUI/Auth
-  - FirebaseUI/Google (4.0.0):
+  - FirebaseUI/Google (4.1.1):
     - FirebaseUI/Auth
     - GoogleSignIn (~> 4.0)
-  - FirebaseUI/Storage (4.0.0):
+  - FirebaseUI/Storage (4.1.1):
     - Firebase/Storage
     - SDWebImage (~> 4.0)
   - FoldingCell (2.1.3)
@@ -136,28 +138,40 @@ PODS:
     - GoogleToolboxForMac/NSString+URLArguments (= 2.1.1)
   - GTMOAuth2 (1.1.4):
     - GTMSessionFetcher (~> 1.1)
-  - GTMSessionFetcher (1.1.10):
-    - GTMSessionFetcher/Full (= 1.1.10)
-  - GTMSessionFetcher/Core (1.1.10)
-  - GTMSessionFetcher/Full (1.1.10):
-    - GTMSessionFetcher/Core (= 1.1.10)
-  - JVFloatLabeledTextField (1.1.1)
-  - MTBBarcodeScanner (5.0.0)
+  - GTMSessionFetcher (1.1.11):
+    - GTMSessionFetcher/Full (= 1.1.11)
+  - GTMSessionFetcher/Core (1.1.11)
+  - GTMSessionFetcher/Full (1.1.11):
+    - GTMSessionFetcher/Core (= 1.1.11)
+  - JVFloatLabeledTextField (1.2.0)
+  - MTBBarcodeScanner (5.0.1)
+  - nanopb (0.3.8):
+    - nanopb/decode (= 0.3.8)
+    - nanopb/encode (= 0.3.8)
+  - nanopb/decode (0.3.8)
+  - nanopb/encode (0.3.8)
   - PermissionScope (1.1.1)
   - Protobuf (3.3.0)
   - SDWebImage (4.0.0):
     - SDWebImage/Core (= 4.0.0)
   - SDWebImage/Core (4.0.0)
-  - SwifterSwift (1.6.4)
+  - SwifterSwift (3.1.0):
+    - SwifterSwift/Cocoa (= 3.1.0)
+    - SwifterSwift/Foundation (= 3.1.0)
+    - SwifterSwift/UIKit (= 3.1.0)
+  - SwifterSwift/Cocoa (3.1.0)
+  - SwifterSwift/Foundation (3.1.0)
+  - SwifterSwift/UIKit (3.1.0)
   - UITextField+Shake (1.1.2)
   - VersionTrackerSwift (1.1.0)
 
 DEPENDENCIES:
   - Alamofire (~> 4.0)
-  - AlamofireImage (~> 3.1)
+  - AlamofireImage (~> 3.2)
+  - BarcodeScanner
   - CDAlertView
   - ChameleonFramework/Swift (from `https://github.com/ViccAlexander/Chameleon.git`)
-  - DeviceKit (~> 1.0)
+  - DeviceKit (~> 1.2)
   - Firebase/Auth
   - Firebase/Core
   - Firebase/Crash
@@ -188,25 +202,26 @@ EXTERNAL SOURCES:
 
 CHECKOUT OPTIONS:
   ChameleonFramework:
-    :commit: acc480fbe023c6e5fe40f68593f4a70a8c4c7ad5
+    :commit: 6dd284bde21ea2e7f9fd89bc36f40df16e16369d
     :git: https://github.com/ViccAlexander/Chameleon.git
   GeoFire:
     :commit: 96d6463f59016785f9c5ae9b669019c44786a23f
     :git: https://github.com/firebase/geofire-objc.git
 
 SPEC CHECKSUMS:
-  Alamofire: dc44b1600b800eb63da6a19039a0083d62a6a62d
+  Alamofire: f28cdffd29de33a7bfa022cbd63ae95a27fae140
   AlamofireImage: 157ed682cc81d3b9db4fb90c1f12180ac552d93b
+  BarcodeScanner: 02a879e49cbda516158ee0bcf7ce9665b4aa26b9
   Bolts: 8a7995239dbe724f9cba2248b766d48b7ebdd322
   CDAlertView: e6f365fa0fac7349197e7ea4bd7810c069215cf4
   ChameleonFramework: d21a3cc247abfe5e37609a283a8238b03575cf64
-  DeviceKit: 461e525867e48e725f41699c1cab3100df1258ff
-  FBSDKCoreKit: d7829f5a69901cd7296105328e4c3c3fc7da6518
-  FBSDKLoginKit: 6b92bd65f319d669d2b0730e49db495ef1660566
-  Firebase: c7ad0731eab26d18a3fc547dd048b0f7cd9c63ae
-  FirebaseAnalytics: 4d7040fefc3cd8b291cde35f12cf063d7963f15d
+  DeviceKit: f33cbc6e67d9bb416e42dedc647557c7c2f6d3d7
+  FBSDKCoreKit: f8c9eb0dd34a9cd277c7b60da4b32226d142502d
+  FBSDKLoginKit: 1214c6d5a1c4995b694d8db8a9ba6910c6028acf
+  Firebase: 1492bf04e1b73a7353b4fb2cf5a20bac9692f341
+  FirebaseAnalytics: ad41720e3e67fc63fbe3d2948d3e26932a8de311
   FirebaseAuth: ebb6abcbabae00fc47446d690c19ce68d8484fde
-  FirebaseCore: 1a8bf6c795ad07d2918278657954ffd2552e9c17
+  FirebaseCore: cfc042628ef9f20debe09c0eb683135fcd404cb4
   FirebaseCrash: 600ec2cbd8e10c3064a42de2c6ee7687bd02a076
   FirebaseDatabase: d829b3a8c3e2ac7a16773c5df226966b0805dfc2
   FirebaseDynamicLinks: ad3bef2e8addfa1490af9db02201429c5c9447dd
@@ -214,23 +229,24 @@ SPEC CHECKSUMS:
   FirebaseInvites: 1940225e620b0423cf04fb4e4c7eb2a1b0b7595b
   FirebaseMessaging: 227406c05b0dc9290702d2e9f18ab5528f0c2cf2
   FirebaseStorage: 8110a1ed2034c8fbfd83890d2acc9cdbbd99afec
-  FirebaseUI: b9de05bfb4768db05f64ea90fc2f6a07b819118f
+  FirebaseUI: 5ebebe2c096c71f20abd1d43d0388958373bdaa0
   FoldingCell: f3073f8b24cf20866a35198f31e3b67aea64e96e
   GeoFire: 02f02683e09367c2eee073c6b09c794da19833ee
   GoogleAPIClientForREST: bf724227a6ad1459aab09b73800aad9184a0f64c
   GoogleSignIn: d7ad83f13480e1f30453471d00d19b5293ac46af
   GoogleToolboxForMac: 8e329f1b599f2512c6b10676d45736bcc2cbbeb0
   GTMOAuth2: 7fc9c10f5c745f4d9850419ea88889fe3baa6b7d
-  GTMSessionFetcher: 30d874b96d0d76028f61fbd122801e3f030d47db
-  JVFloatLabeledTextField: 0e5524b097f102036214dd8279edc8ecf08b5e18
-  MTBBarcodeScanner: f7ac0087f2467ba73e4d429bb1bc2098fe11b09f
+  GTMSessionFetcher: 5ad62e8200fa00ed011fe5e08d27fef72c5b1429
+  JVFloatLabeledTextField: 96c0c1b6739001801340d25b86aff990d67c4181
+  MTBBarcodeScanner: 66c75f40cbac5986c97634a0775bfe7f92243e7c
+  nanopb: 5601e6bca2dbf1ed831b519092ec110f66982ca3
   PermissionScope: a30c16e015779ba27c97c124e7539e27b5829de2
   Protobuf: d582fecf68201eac3d79ed61369ef45734394b9c
   SDWebImage: 76a6348bdc74eb5a55dd08a091ef298e56b55e41
-  SwifterSwift: 92c73c47c3cbf7d5f788adf6459bf07b5d23d3fb
+  SwifterSwift: f84eb7308f7742724b3cbf84283ce00f7c06d7fc
   UITextField+Shake: 47cc0429dafb3da580686339ad2da091249a8ea2
   VersionTrackerSwift: 7f08827b631584ecbda53361b6ab3f9587fac5ab
 
-PODFILE CHECKSUM: 3911082e0c91c85db3ab9f8a54b1cecd39e1b316
+PODFILE CHECKSUM: a6ceb9bfb658710f6eced3810ecaee86978931e5
 
-COCOAPODS: 1.3.0.beta.1
+COCOAPODS: 1.2.1

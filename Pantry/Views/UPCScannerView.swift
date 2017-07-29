@@ -126,7 +126,8 @@ final class UPCScannerView: UIView, UITextFieldDelegate {
 	}
 
 	@IBAction func torchToggle(_ sender: Any) {
-		guard let device = AVCaptureDevice.default(for: .video) else { return }
+
+		guard let device = AVCaptureDevice.defaultDevice(withMediaType: AVMediaTypeVideo) else { return }
 
 		if device.hasTorch {
 			do {
@@ -135,7 +136,8 @@ final class UPCScannerView: UIView, UITextFieldDelegate {
 				if device.isTorchActive {
 					device.torchMode = .off
 				} else {
-					try device.setTorchModeOn(level: 0.1)
+					try device.setTorchModeOnWithLevel(0.1)
+					// try device.setTorchModeOn(level: 0.1) // Swift 4
 				}
 
 				device.unlockForConfiguration()

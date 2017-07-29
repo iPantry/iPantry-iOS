@@ -4,15 +4,16 @@ platform :ios, '9.0'
 target 'Pantry' do
   # Comment the next line if you're not using Swift and don't want to use dynamic frameworks
   use_frameworks!
+  inhibit_all_warnings! 
 
   # Pods for Pantry
 	pod 'MTBBarcodeScanner'
 	pod 'Alamofire', '~> 4.0'
-	pod 'AlamofireImage', '~> 3.1'
+	pod 'AlamofireImage', '~> 3.2'
 	pod 'ChameleonFramework/Swift', :git => 'https://github.com/ViccAlexander/Chameleon.git'
 	pod 'PermissionScope'
 	pod 'VersionTrackerSwift'
-	pod 'DeviceKit', '~> 1.0'
+	pod 'DeviceKit', '~> 1.2'
 	pod 'Firebase/Core'
 	pod 'Firebase/Database'
 	pod 'Firebase/Messaging'
@@ -27,9 +28,11 @@ target 'Pantry' do
 	pod 'FirebaseUI/Google', '~> 4.0'
 	pod 'FirebaseUI/Facebook', '~> 4.0'
 	pod 'GeoFire', :git => 'https://github.com/firebase/geofire-objc.git'
+	pod 'BarcodeScanner'
 	
-		# Extensions
+	# Extensions
 	pod 'SwifterSwift'
+		
 
 		# UI
 	pod 'UITextField+Shake', '~> 1.1'
@@ -56,6 +59,7 @@ post_install do |installer|
     if target.name == 'GeoFire' then
       target.build_configurations.each do |config|
         config.build_settings['FRAMEWORK_SEARCH_PATHS'] = "#{config.build_settings['FRAMEWORK_SEARCH_PATHS']} ${PODS_ROOT}/FirebaseDatabase/Frameworks/ $PODS_CONFIGURATION_BUILD_DIR/GoogleToolboxForMac"
+        config.build_settings['FRAMEWORK_SEARCH_PATHS'] = "#{config.build_settings['FRAMEWORK_SEARCH_PATHS']} ${PODS_ROOT}/FirebaseDatabase/Frameworks/ $PODS_CONFIGURATION_BUILD_DIR/GoogleToolboxForMac $PODS_CONFIGURATION_BUILD_DIR/nanopb"
         config.build_settings['OTHER_LDFLAGS'] = "#{config.build_settings['OTHER_LDFLAGS']} -framework FirebaseDatabase"
       end
     end

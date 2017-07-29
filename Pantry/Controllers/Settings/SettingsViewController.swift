@@ -47,7 +47,7 @@ class SettingsViewController: UITableViewController, FUIAuthDelegate {
 
 	@objc func pantryUser(notification: Notification) {
 		switch notification.name {
-		case .pantryUserWasUpdated, .pantryUserDoesNotExist :
+		case Notification.Name.pantryUserWasUpdated, Notification.Name.pantryUserDoesNotExist :
 			// Do stuff
 			DispatchQueue.main.async {
 				self.tableView.reloadSections([0], with: .fade)

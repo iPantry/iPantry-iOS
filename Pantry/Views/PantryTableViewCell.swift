@@ -23,7 +23,8 @@ class PantryTableViewCell: UITableViewCell {
 		self.countLabel.text = String(describing: pantryItem.quantity ?? 1)
 		self.expirationLabel.text = getExpirationDescription(days: pantryItem.expirationEstimate)
 	}
-
+	
+    //swiftlint:disable:next cyclomatic_complexity
 	private func getExpirationDescription(days: Int?) -> String {
 		guard let days = days else {
 			return "?"

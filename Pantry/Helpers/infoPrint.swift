@@ -44,15 +44,15 @@ func fb_log(_ type: OSLogType, message: StaticString, file: StaticString = #file
 extension OSLogType: CustomStringConvertible {
 	public var description: String {
 		switch self {
-		case .error:
+		case OSLogType.error:
 			return "Error"
-		case .info:
+		case OSLogType.info:
 			return "Info"
-		case .default:
+		case OSLogType.default:
 			return "Default"
-		case .debug:
+		case OSLogType.debug:
 			return "Debug"
-		case .fault:
+		case OSLogType.fault:
 			return "Fault"
 		default:
 			return "Unknown"
