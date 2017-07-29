@@ -9,17 +9,16 @@
 import Foundation
 import Firebase
 import FirebaseAuth
-import FireWrap
 
 final class Pantry {
+
+	let ref = Database.database().reference()
 
 	init(withId pantryId: PantryIdentifier) {
 		//setup firebase listener
 		fb_log(.debug, message: "Creating Pantry object", args: [pantryId.type.rawValue: pantryId.value])
 
 		self.pantryId = pantryId
-
-		let ref = Database.database().reference()
 
 		if self.pantryId.type == .pantryId { //only check for pantry members if user is not anonymous
 			let usersRef = ref.child("pantries").child(self.pantryId.value)
@@ -42,7 +41,7 @@ final class Pantry {
 			if let uid = PantryUser.current?.uid {
 				fb_log(.info, message: "Creating Pantry directory")
 				let newData: FireDictionary = [uid: true]
-				Database.database().reference().child("/pantries/\(self.pantryId)/members").setValue(newData.uploadable)
+				ref.child("/pantries/\(self.pantryId)/members").setValue(newData.uploadable)
 			}
 			return
 		}
@@ -77,8 +76,8 @@ final class Pantry {
 		// update list
 		guard let item = FireDictionary(snapshot.value),
 			let ean = item["ean"] as? String else {
-			fb_log(.error, message: "Pantry data snapshot invalid", args: ["snapshot": snapshot.description])
-			return
+				fb_log(.error, message: "Pantry data snapshot invalid", args: ["snapshot": snapshot.description])
+				return
 		}
 
 		UPCDB.current.lookup(by: ean) { (upcItems, error) in
@@ -93,11 +92,11 @@ final class Pantry {
 
 			if let newItemObject = PantryItem(snapshot.key, item, upcItems![0]) {
 				self.list.append(newItemObject)
-				fb_log(.debug, message: "Item added pantry")
+				fb_log(.debug, message: "Item added to pantry")
+				NotificationCenter.default.post(name: .pantryListWasUpdated, object: self)
 			} else {
 				fb_log(.error, message: "Failed to add item to pantry")
 			}
-
 		}
 
 		print(snapshot)
@@ -105,7 +104,7 @@ final class Pantry {
 
 	deinit {
 		for handle in observerHandles {
-			Database.database().reference().removeObserver(withHandle: handle)
+			ref.removeObserver(withHandle: handle)
 		}
 	}
 

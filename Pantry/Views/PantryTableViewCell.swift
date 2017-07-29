@@ -13,18 +13,18 @@ class PantryTableViewCell: UITableViewCell {
 	@IBOutlet weak var countLabel: UILabel!
 	@IBOutlet weak var expirationLabel: UILabel!
 
-    override func awakeFromNib() {
-        super.awakeFromNib()
-        // Initialization code
-    }
+	override func awakeFromNib() {
+		super.awakeFromNib()
+		// Initialization code
+	}
 
 	func configure(from pantryItem: PantryItem) {
 		self.nameLabel.text = pantryItem.title
 		self.countLabel.text = String(describing: pantryItem.quantity ?? 1)
 		self.expirationLabel.text = getExpirationDescription(days: pantryItem.expirationEstimate)
 	}
-	
-    //swiftlint:disable:next cyclomatic_complexity
+
+	//swiftlint:disable:next cyclomatic_complexity
 	private func getExpirationDescription(days: Int?) -> String {
 		guard let days = days else {
 			return "?"
@@ -63,9 +63,9 @@ class PantryTableViewCell: UITableViewCell {
 
 	}
 
-    override func setSelected(_ selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
+	override func setSelected(_ selected: Bool, animated: Bool) {
+		super.setSelected(selected, animated: animated)
 
-        // Configure the view for the selected state
-    }
+		// Configure the view for the selected state
+	}
 }

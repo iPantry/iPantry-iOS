@@ -26,6 +26,12 @@
 		D063DA701EEE7E6400DDD37A /* Pantry.swift in Sources */ = {isa = PBXBuildFile; fileRef = D063DA6F1EEE7E6400DDD37A /* Pantry.swift */; };
 		D06874D21EEC24E400532DDF /* SettingsAccountCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D06874D11EEC24E400532DDF /* SettingsAccountCell.swift */; };
 		D06874D51EEC975200532DDF /* infoPrint.swift in Sources */ = {isa = PBXBuildFile; fileRef = D06874D41EEC975200532DDF /* infoPrint.swift */; };
+		D0693E4F1F2C6771001AE4DD /* Firebase.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0693E461F2C6771001AE4DD /* Firebase.swift */; };
+		D0693E501F2C6771001AE4DD /* FirebaseValue.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0693E471F2C6771001AE4DD /* FirebaseValue.swift */; };
+		D0693E511F2C6771001AE4DD /* FirebaseDictionary.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0693E481F2C6771001AE4DD /* FirebaseDictionary.swift */; };
+		D0693E521F2C6771001AE4DD /* FirebaseArray.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0693E491F2C6771001AE4DD /* FirebaseArray.swift */; };
+		D0693E531F2C6771001AE4DD /* Database+FireWrap.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0693E4A1F2C6771001AE4DD /* Database+FireWrap.swift */; };
+		D0693E541F2C6771001AE4DD /* DataSnapshot+FireWrap.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0693E4B1F2C6771001AE4DD /* DataSnapshot+FireWrap.swift */; };
 		D07093A31EEC17D0005DFA56 /* SettingsSignInCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D07093A21EEC17D0005DFA56 /* SettingsSignInCell.swift */; };
 		D07093A51EEC1A13005DFA56 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D07093A41EEC1A13005DFA56 /* SettingsViewController.swift */; };
 		D081428E1EEBAC010016DE79 /* SimpleUPC.swift in Sources */ = {isa = PBXBuildFile; fileRef = D081428D1EEBAC010016DE79 /* SimpleUPC.swift */; };
@@ -75,7 +81,6 @@
 		A1491768CF420878121D4081 /* Pods-Pantry.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Pantry.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Pantry/Pods-Pantry.debug.xcconfig"; sourceTree = "<group>"; };
 		A6C80AD5EB148F289C458F95 /* Pods-PantryUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PantryUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-PantryUITests/Pods-PantryUITests.release.xcconfig"; sourceTree = "<group>"; };
 		A98AACACD3739C6E7DAA87EF /* Pods-PantryTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PantryTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-PantryTests/Pods-PantryTests.release.xcconfig"; sourceTree = "<group>"; };
-		D000C28E1EFA534C0025EE53 /* FireWrap.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FireWrap.framework; path = "../../../Library/Developer/Xcode/DerivedData/Pantry-fwlufzbstlgsolclcobotfjsffrn/Build/Products/Debug-iphonesimulator/FireWrap.framework"; sourceTree = "<group>"; };
 		D00C89C31EF62CA900992D19 /* UserDocuments.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDocuments.swift; sourceTree = "<group>"; };
 		D0133E7D1EECD8ED0098B056 /* Pantry.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Pantry.entitlements; sourceTree = "<group>"; };
 		D0133E7E1EECDFC80098B056 /* PantryAuthPickerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PantryAuthPickerViewController.swift; sourceTree = "<group>"; };
@@ -101,6 +106,12 @@
 		D063DA6F1EEE7E6400DDD37A /* Pantry.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Pantry.swift; sourceTree = "<group>"; };
 		D06874D11EEC24E400532DDF /* SettingsAccountCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsAccountCell.swift; sourceTree = "<group>"; };
 		D06874D41EEC975200532DDF /* infoPrint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = infoPrint.swift; sourceTree = "<group>"; };
+		D0693E461F2C6771001AE4DD /* Firebase.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Firebase.swift; sourceTree = "<group>"; };
+		D0693E471F2C6771001AE4DD /* FirebaseValue.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FirebaseValue.swift; sourceTree = "<group>"; };
+		D0693E481F2C6771001AE4DD /* FirebaseDictionary.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FirebaseDictionary.swift; sourceTree = "<group>"; };
+		D0693E491F2C6771001AE4DD /* FirebaseArray.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FirebaseArray.swift; sourceTree = "<group>"; };
+		D0693E4A1F2C6771001AE4DD /* Database+FireWrap.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Database+FireWrap.swift"; sourceTree = "<group>"; };
+		D0693E4B1F2C6771001AE4DD /* DataSnapshot+FireWrap.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "DataSnapshot+FireWrap.swift"; sourceTree = "<group>"; };
 		D07093A21EEC17D0005DFA56 /* SettingsSignInCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsSignInCell.swift; sourceTree = "<group>"; };
 		D07093A41EEC1A13005DFA56 /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		D081428D1EEBAC010016DE79 /* SimpleUPC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SimpleUPC.swift; sourceTree = "<group>"; };
@@ -165,7 +176,7 @@
 		AFEA49462A84A8F6EC3E40AB /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				D000C28E1EFA534C0025EE53 /* FireWrap.framework */,
+				D0693E4E1F2C6771001AE4DD /* FireWrap */,
 				6AA3D9CEC266A5DCC8A969E2 /* Pods_Pantry.framework */,
 				7DE30444015D8485DD127850 /* Pods_PantryTests.framework */,
 				09606D778A58C5E9233AFED5 /* Pods_PantryUITests.framework */,
@@ -234,6 +245,20 @@
 				D020472E1D78E8F400CB7C5D /* Info.plist */,
 			);
 			path = PantryUITests;
+			sourceTree = "<group>";
+		};
+		D0693E4E1F2C6771001AE4DD /* FireWrap */ = {
+			isa = PBXGroup;
+			children = (
+				D0693E461F2C6771001AE4DD /* Firebase.swift */,
+				D0693E471F2C6771001AE4DD /* FirebaseValue.swift */,
+				D0693E481F2C6771001AE4DD /* FirebaseDictionary.swift */,
+				D0693E491F2C6771001AE4DD /* FirebaseArray.swift */,
+				D0693E4A1F2C6771001AE4DD /* Database+FireWrap.swift */,
+				D0693E4B1F2C6771001AE4DD /* DataSnapshot+FireWrap.swift */,
+			);
+			name = FireWrap;
+			path = ../FireWrap/FireWrap;
 			sourceTree = "<group>";
 		};
 		D08A02501E7686A300F2A486 /* Grocery List */ = {
@@ -680,11 +705,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D0693E511F2C6771001AE4DD /* FirebaseDictionary.swift in Sources */,
+				D0693E541F2C6771001AE4DD /* DataSnapshot+FireWrap.swift in Sources */,
 				D0D988771EF61DF500DE80D6 /* UPCScannerView.swift in Sources */,
 				D0A7A0FF1E3ADFE900A9D6CA /* EditItemDetailsViewController.swift in Sources */,
 				D0133E7F1EECDFC80098B056 /* PantryAuthPickerViewController.swift in Sources */,
 				D020470F1D78E8F300CB7C5D /* UPCScanViewController.swift in Sources */,
 				D081428E1EEBAC010016DE79 /* SimpleUPC.swift in Sources */,
+				D0693E4F1F2C6771001AE4DD /* Firebase.swift in Sources */,
 				D08142921EEBD07D0016DE79 /* PantryTabBarController.swift in Sources */,
 				D020470B1D78E8F300CB7C5D /* AppDelegate.swift in Sources */,
 				D08A02521E7686D300F2A486 /* GroceryListViewController.swift in Sources */,
@@ -693,16 +721,19 @@
 				D0FE18771EF50596007A6561 /* AccountViewController.swift in Sources */,
 				D0B23DD11E7670960059DF72 /* KeyboardHandler.swift in Sources */,
 				D06874D21EEC24E400532DDF /* SettingsAccountCell.swift in Sources */,
+				D0693E531F2C6771001AE4DD /* Database+FireWrap.swift in Sources */,
 				D04477631DD74989001FE0A2 /* MyPantryViewController.swift in Sources */,
 				D00C89C41EF62CA900992D19 /* UserDocuments.swift in Sources */,
 				D063DA701EEE7E6400DDD37A /* Pantry.swift in Sources */,
 				D08A02861E7740BD00F2A486 /* UIViewControllerExtension.swift in Sources */,
 				D0485D971DD7E7C700BF7441 /* ItemDetailsViewController.swift in Sources */,
 				D01FD2EC1EF73D5F008DD04C /* UPCDatabase.swift in Sources */,
+				D0693E501F2C6771001AE4DD /* FirebaseValue.swift in Sources */,
 				D07093A31EEC17D0005DFA56 /* SettingsSignInCell.swift in Sources */,
 				D0EAB15E1EF3AAE1003EBC56 /* PantryItem.swift in Sources */,
 				D06874D51EEC975200532DDF /* infoPrint.swift in Sources */,
 				D03A04811E76160A00DC04C3 /* UPCitemdb.swift in Sources */,
+				D0693E521F2C6771001AE4DD /* FirebaseArray.swift in Sources */,
 				D04477651DD75A98001FE0A2 /* PantryTableViewCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -878,6 +909,10 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = Pantry/Pantry.entitlements;
 				DEVELOPMENT_TEAM = 747EALPHEP;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
 				INFOPLIST_FILE = Pantry/Application/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = me.justinoroz.Pantry;
@@ -895,6 +930,10 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = Pantry/Pantry.entitlements;
 				DEVELOPMENT_TEAM = 747EALPHEP;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
 				INFOPLIST_FILE = Pantry/Application/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = me.justinoroz.Pantry;

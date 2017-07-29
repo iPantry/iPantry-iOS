@@ -7,7 +7,6 @@
 //
 
 import Foundation
-import FireWrap
 
 struct PantryItem: Hashable {
 	var hashValue: Int {
@@ -81,9 +80,9 @@ struct PantryItem: Hashable {
 	// init from firebase
 	init?(_ itemId: String, _ itemDict: FireDictionary, _ upcData: UPCDatabaseItem) {
 		guard let ean = itemDict["ean"] as? String,
-		let creator = itemDict["creator"] as? String else {
-			fb_log(.error, message: "New Pantry Item failed with ID", args: ["id": itemId])
-			return nil
+			let creator = itemDict["creator"] as? String else {
+				fb_log(.error, message: "New Pantry Item failed with ID", args: ["id": itemId])
+				return nil
 		}
 
 		self.ean = ean
@@ -93,8 +92,8 @@ struct PantryItem: Hashable {
 		self.upcData = upcData
 	}
 
-    
-    ///
+
+	///
 	private(set) var identifier: String?
 	private var itemDict: FireDictionary
 	private let upcData: UPCDatabaseItem

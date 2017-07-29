@@ -26,10 +26,10 @@ final class SimpleUPC: UPCDatabase {
 		let params = ["upc": barcode]
 
 		let request: [String: Any] = [
-						"auth": auth,
-		              	"method": method,
-		              	"params": params
-						]
+			"auth": auth,
+			"method": method,
+			"params": params
+		]
 		let headers = ["Content-Type": "text/json"]
 
 		Alamofire.request("https://api.upcitemdb.com/prod/trial/lookup",
@@ -38,17 +38,17 @@ final class SimpleUPC: UPCDatabase {
 		                  encoding: JSONEncoding.default,
 		                  headers: headers).responseJSON { (response) in
 
-							guard response.error == nil,
-								let json = response.result.value as? [String: AnyObject]
-								else {
-									returned?(nil, response.error!)
-									print("SimpleUPC Lookup Error: \(response.error!)")
-									return
-							}
+												guard response.error == nil,
+													let json = response.result.value as? [String: AnyObject]
+													else {
+														returned?(nil, response.error!)
+														print("SimpleUPC Lookup Error: \(response.error!)")
+														return
+												}
 
-							print("JSON: \(json)")
+												print("JSON: \(json)")
 
-							returned?([SimpleUPCItem(json)], nil)
+												returned?([SimpleUPCItem(json)], nil)
 
 			}.resume()
 	}
@@ -72,11 +72,11 @@ struct SimpleUPCItem: UPCDatabaseItem {
 	var description: String?
 
 	var brand: String?
-
+	
 	var size: String?
-
+	
 	var weight: String?
-
+	
 	var imageURLs: [String]?
-
+	
 }

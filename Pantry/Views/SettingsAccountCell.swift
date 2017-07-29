@@ -14,19 +14,19 @@ class SettingsAccountCell: UITableViewCell {
 	@IBOutlet weak var emailLabel: UILabel!
 	@IBOutlet weak var userImage: UIImageView!
 
-    override func awakeFromNib() {
-        super.awakeFromNib()
-        // Initialization code
+	override func awakeFromNib() {
+		super.awakeFromNib()
+		// Initialization code
 
 		if let user = PantryUser.current {
 			self.emailLabel.text = user.email
 		}
-    }
+	}
 
-    override func setSelected(_ selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
+	override func setSelected(_ selected: Bool, animated: Bool) {
+		super.setSelected(selected, animated: animated)
 
-        // Configure the view for the selected state
-    }
+		// Configure the view for the selected state
+	}
 
 }

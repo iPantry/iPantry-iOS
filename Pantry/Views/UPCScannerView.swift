@@ -167,7 +167,9 @@ final class UPCScannerView: UIView, UITextFieldDelegate {
 
 	@objc func keyboardWillHideNotification(notification: NSNotification) {
 		self.dismissKeyboardButton.isHidden = true
-		self.blurView.isHidden = true
+		if pscope.statusCamera() == .authorized {
+			self.blurView.isHidden = true
+		}
 		self.sendSubview(toBack: self.dismissKeyboardButton)
 		updateBottomLayoutConstraintWithNotification(notification: notification)
 	}

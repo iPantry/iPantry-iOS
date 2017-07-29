@@ -21,28 +21,28 @@ final class UPCitemdb: UPCDatabase {
 		                  encoding: JSONEncoding.default,
 		                  headers: headers).responseJSON { (response) in
 
-			guard response.error == nil,
-				let json = response.result.value as? [String: AnyObject]
-				else {
-				returned?(nil, response.error)
-					print("UPCitemdb Lookup Error: \(String(describing: response.error))")
-				return
-			}
+												guard response.error == nil,
+													let json = response.result.value as? [String: AnyObject]
+													else {
+														returned?(nil, response.error)
+														print("UPCitemdb Lookup Error: \(String(describing: response.error))")
+														return
+												}
 
-			guard let items = json["items"] as? [[String:AnyObject]] else {
+												guard let items = json["items"] as? [[String:AnyObject]] else {
 
-				return
-			}
+													return
+												}
 
-			var itemObjects = [UPCDatabaseItem]()
+												var itemObjects = [UPCDatabaseItem]()
 
-			for item in items {
-				itemObjects.append(UPCitemdbItem(item))
-			}
+												for item in items {
+													itemObjects.append(UPCitemdbItem(item))
+												}
 
-			returned?(itemObjects, response.error)
+												returned?(itemObjects, response.error)
 
-		}.resume()
+			}.resume()
 	}
 }
 
@@ -72,15 +72,15 @@ struct UPCitemdbItem: UPCDatabaseItem {
 	var brand: String? {
 		return data["brand"] as? String
 	}
-
+	
 	var size: String? {
 		return data["size"] as? String
 	}
-
+	
 	var weight: String? {
 		return data["weight"] as? String
 	}
-
+	
 	var imageURLs: [String]? {
 		return data["images"] as? [String]
 	}

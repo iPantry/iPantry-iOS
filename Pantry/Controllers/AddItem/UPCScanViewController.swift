@@ -77,7 +77,7 @@ class UPCScanViewController: UIViewController, UPCScannerViewDelegate {
 		switch segue.identifier! {
 		case "editDetails":
 			guard let destination = segue.destination as? EditItemDetailsViewController,
-			let data = sender as? [UPCDatabaseItem] else { return }
+				let data = sender as? [UPCDatabaseItem] else { return }
 
 			destination.items = data
 
@@ -85,5 +85,5 @@ class UPCScanViewController: UIViewController, UPCScannerViewDelegate {
 			break
 		}
 	}
-
+	
 }
