@@ -48,6 +48,8 @@
 		D0B23DD11E7670960059DF72 /* KeyboardHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0B23DD01E7670960059DF72 /* KeyboardHandler.swift */; };
 		D0B23DD41E7680F30059DF72 /* Settings.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D0B23DD31E7680F30059DF72 /* Settings.storyboard */; };
 		D0B41BB51EF4E2AB001EDEA5 /* AddItem.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D0B41BB41EF4E2AB001EDEA5 /* AddItem.storyboard */; };
+		D0CB0B7F1F2C9533001B1C1A /* Item.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0CB0B7E1F2C9533001B1C1A /* Item.swift */; };
+		D0CB0B811F2DB767001B1C1A /* FirebaseSuggestions.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0CB0B801F2DB767001B1C1A /* FirebaseSuggestions.swift */; };
 		D0D988771EF61DF500DE80D6 /* UPCScannerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0D988761EF61DF500DE80D6 /* UPCScannerView.swift */; };
 		D0EAB15E1EF3AAE1003EBC56 /* PantryItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0EAB15D1EF3AAE1003EBC56 /* PantryItem.swift */; };
 		D0FE18771EF50596007A6561 /* AccountViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0FE18761EF50596007A6561 /* AccountViewController.swift */; };
@@ -124,6 +126,8 @@
 		D0B23DD01E7670960059DF72 /* KeyboardHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KeyboardHandler.swift; sourceTree = "<group>"; };
 		D0B23DD31E7680F30059DF72 /* Settings.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Settings.storyboard; sourceTree = "<group>"; };
 		D0B41BB41EF4E2AB001EDEA5 /* AddItem.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = AddItem.storyboard; sourceTree = "<group>"; };
+		D0CB0B7E1F2C9533001B1C1A /* Item.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Item.swift; sourceTree = "<group>"; };
+		D0CB0B801F2DB767001B1C1A /* FirebaseSuggestions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseSuggestions.swift; sourceTree = "<group>"; };
 		D0D988761EF61DF500DE80D6 /* UPCScannerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UPCScannerView.swift; sourceTree = "<group>"; };
 		D0EAB15D1EF3AAE1003EBC56 /* PantryItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PantryItem.swift; sourceTree = "<group>"; };
 		D0FE18761EF50596007A6561 /* AccountViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountViewController.swift; sourceTree = "<group>"; };
@@ -345,6 +349,8 @@
 				D063DA6F1EEE7E6400DDD37A /* Pantry.swift */,
 				D0EAB15D1EF3AAE1003EBC56 /* PantryItem.swift */,
 				D0FE18781EF511D3007A6561 /* PantryUser.swift */,
+				D0CB0B7E1F2C9533001B1C1A /* Item.swift */,
+				D0CB0B801F2DB767001B1C1A /* FirebaseSuggestions.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -711,6 +717,7 @@
 				D0A7A0FF1E3ADFE900A9D6CA /* EditItemDetailsViewController.swift in Sources */,
 				D0133E7F1EECDFC80098B056 /* PantryAuthPickerViewController.swift in Sources */,
 				D020470F1D78E8F300CB7C5D /* UPCScanViewController.swift in Sources */,
+				D0CB0B7F1F2C9533001B1C1A /* Item.swift in Sources */,
 				D081428E1EEBAC010016DE79 /* SimpleUPC.swift in Sources */,
 				D0693E4F1F2C6771001AE4DD /* Firebase.swift in Sources */,
 				D08142921EEBD07D0016DE79 /* PantryTabBarController.swift in Sources */,
@@ -720,6 +727,7 @@
 				D07093A51EEC1A13005DFA56 /* SettingsViewController.swift in Sources */,
 				D0FE18771EF50596007A6561 /* AccountViewController.swift in Sources */,
 				D0B23DD11E7670960059DF72 /* KeyboardHandler.swift in Sources */,
+				D0CB0B811F2DB767001B1C1A /* FirebaseSuggestions.swift in Sources */,
 				D06874D21EEC24E400532DDF /* SettingsAccountCell.swift in Sources */,
 				D0693E531F2C6771001AE4DD /* Database+FireWrap.swift in Sources */,
 				D04477631DD74989001FE0A2 /* MyPantryViewController.swift in Sources */,

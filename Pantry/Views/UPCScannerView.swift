@@ -53,7 +53,7 @@ final class UPCScannerView: UIView, UITextFieldDelegate {
 		scanner = MTBBarcodeScanner(previewView: self)
 		scanner!.allowTapToFocus = true
 		scanner!.didStartScanningBlock = {
-			self.scannerLoading(done: true)
+			self.scannerLoading(false)
 		}
 	}
 
@@ -65,6 +65,7 @@ final class UPCScannerView: UIView, UITextFieldDelegate {
 		}
 	}
 
+	/// Called when view is shown
 	override func didMoveToWindow() {
 		if self.window != nil {
 			// swiftlint:disable line_length
@@ -92,11 +93,19 @@ final class UPCScannerView: UIView, UITextFieldDelegate {
 
 	// MARK: - Layout
 
-	func scannerLoading(done: Bool = false) {
-		if !done {
+	/// Prepares view based on loading status
+	///
+	/// - Parameter done: whether scanner loading is complete
+	func scannerLoading(_ inProgress: Bool = true) {
+		if inProgress{
 			self.blurView.isHidden = false
 			self.backgroundImage.isHidden = false
 			self.scannerLoadingIndicator.startAnimating()
+			if let device = AVCaptureDevice.defaultDevice(withMediaType: AVMediaTypeVideo), device.isTorchActive {
+				torchToggle(self)
+			}
+
+			// TODO: Disable all buttons
 		} else {
 			self.blurView.isHidden = true
 			self.backgroundImage.isHidden = true
@@ -141,9 +150,7 @@ final class UPCScannerView: UIView, UITextFieldDelegate {
 				}
 
 				device.unlockForConfiguration()
-			} catch {
-
-			}
+			} catch { }
 		}
 	}
 
@@ -152,7 +159,13 @@ final class UPCScannerView: UIView, UITextFieldDelegate {
 	}
 
 	@IBAction func manualUPCSearch(_ sender: Any) {
-		lookupUPC(upc: upcField.text!)
+		// TODO: Decide to restart scanning or go back to text input
+		self.delegate?.scanner(didFind: upcField.text!) { shouldRestartScanner in
+			if shouldRestartScanner {
+				self.manualUPCInput(sender)
+			}
+		}
+		//lookupUPC(upc: upcField.text!)
 	}
 
 	@objc func keyboardWillShowNotification(notification: NSNotification) {
@@ -265,29 +278,15 @@ final class UPCScannerView: UIView, UITextFieldDelegate {
 			}
 
 			self.savePlaceholderImage()
-			self.scannerLoading()
+			self.scannerLoading(false)
 			self.scanner!.stopScanning()
-			self.lookupUPC(upc: codeObjects[0].stringValue!)
-		})
-	}
+			//self.lookupUPC(upc: codeObjects[0].stringValue!)
 
-	private func lookupUPC(upc: String) {
-		UPCDB.current.lookup(by: upc, returned: { (data, error) in
-			guard error == nil,
-				data != nil
-				else {
-					self.scannerLoading(done: true)
-					self.tryScanning()
-					// TODO: Alert User, begin scanning again when dismissed
-					return
-			}
-
-			if data!.count > 0 {
-				self.delegate?.scanner(didFind: data!)
-			} else {
-				let productInfo: [String: AnyObject] = ["ean": upc as AnyObject]
-				self.delegate?.scanner(didFind: [UPCitemdbItem(productInfo)])
-			}
+			self.delegate?.scanner(didFind: codeObjects[0].stringValue!, completion: { (shouldRestartScanner) in
+				if shouldRestartScanner {
+					self.beginScanning()
+				}
+			})
 		})
 	}
 
@@ -309,6 +308,14 @@ final class UPCScannerView: UIView, UITextFieldDelegate {
 }
 
 protocol UPCScannerViewDelegate: class {
-	func scanner(didFind items: [UPCDatabaseItem])
+
+	/// Called when scanner finds a valid UPC
+	///
+	/// - Parameters:
+	///   - upc: UPC string
+	///   - completion: Handler which determines whether scanner should restart
+	func scanner(didFind upc: String, completion:  @escaping (_ shouldRestartScanner: Bool) -> Void)
+
+	/// Back button was tapped
 	func backWasTapped()
 }

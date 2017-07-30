@@ -81,7 +81,7 @@ final class Pantry {
 		}
 
 		UPCDB.current.lookup(by: ean) { (upcItems, error) in
-			//TODO: Pull correct item from UPC DB if multiple
+			//TODO: Pull multiple items from UPC DB
 			guard error == nil,
 				upcItems != nil else {
 					fb_log(.error, message: "UPC Database lookup returned error",
@@ -90,7 +90,7 @@ final class Pantry {
 					return
 			}
 
-			if let newItemObject = PantryItem(snapshot.key, item, upcItems?[0]) {
+			if let newItemObject = PantryItem(snapshot.key, item, upcItems!.count > 0 ? upcItems![0] : nil) {
 				self.list.append(newItemObject)
 				fb_log(.debug, message: "Item added to pantry")
 				NotificationCenter.default.post(name: .pantryListWasUpdated, object: self)

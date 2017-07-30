@@ -60,9 +60,45 @@ class UPCScanViewController: UIViewController, UPCScannerViewDelegate {
 	// MARK: - User Interaction
 
 	// MARK: - ScannerDelegate
+	func scanner(didFind upc: String, completion: @escaping (Bool) -> Void) {
+		// TODO: Search Firebase for Suggestions
+		// Search UPCDB for data
 
-	func scanner(didFind items: [UPCDatabaseItem]) {
-		self.performSegue(withIdentifier: "editDetails", sender: items)
+		Item.lookup(by: upc) { (item, error) in
+			let alert = UIAlertController()
+
+			guard error == nil else {
+				alert.title = "Error"
+				alert.message = "An error occured checking the UPC. Please try again"
+				alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: { _ in
+					completion(true)
+				}))
+				DispatchQueue.main.async {
+					alert.show()
+				}
+				return
+			}
+
+			guard let item = item else {
+				alert.title = "UPC Not Found"
+				alert.message = "Would you like to continue anyway?"
+				alert.addAction(UIAlertAction(title: "Yes", style: .default, handler: { _ in
+					completion(false)
+					self.performSegue(withIdentifier: "editDetails", sender: Item(upc))
+				}))
+				alert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: { _ in
+					completion(true)
+				}))
+				DispatchQueue.main.async {
+					alert.show()
+				}
+				return
+			}
+
+			DispatchQueue.main.async {
+				self.performSegue(withIdentifier: "editDetails", sender: item)
+			}
+		}
 	}
 
 	func backWasTapped() {
@@ -72,14 +108,13 @@ class UPCScanViewController: UIViewController, UPCScannerViewDelegate {
 	// MARK: - Additional Helpers
 
 	// MARK: - Navigation
-
 	override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
 		switch segue.identifier! {
 		case "editDetails":
 			guard let destination = segue.destination as? EditItemDetailsViewController,
-				let data = sender as? [UPCDatabaseItem] else { return }
-
-			destination.items = data
+				let data = sender as? Item else { return }
+			// TODO: Change data to Item
+			destination.item = data
 
 		default:
 			break

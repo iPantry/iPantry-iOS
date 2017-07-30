@@ -80,7 +80,7 @@ struct UPCitemdbItem: UPCDatabaseItem {
 	var weight: String? {
 		return data["weight"] as? String
 	}
-	
+
 	var imageURLs: [String]? {
 		return data["images"] as? [String]
 	}

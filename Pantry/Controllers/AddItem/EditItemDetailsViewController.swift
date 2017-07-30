@@ -18,23 +18,20 @@ class EditItemDetailsViewController: UIViewController {
 	@IBOutlet weak var itemTitle: UITextField!
 	@IBOutlet weak var itemImage: UIImageView!
 
-	var items: [UPCDatabaseItem]!
+	var item: Item!
 	var selectedItem: UPCDatabaseItem?
 	var ref: DatabaseReference!
 	var ean: String!
-	var customItem: [String: AnyObject] = [:]
 
 	override func viewDidLoad() {
 		super.viewDidLoad()
 		ref = Database.database().reference()
 
-		self.customItem["ean"] = self.items[0].ean as AnyObject
-
-		if items.count > 1 {
+		if item.UPCResults.count > 1 {
 			print("[ALERT] More than one item found with ean")
 			// TODO: Let user pick
 		} else {
-			self.selectedItem = items[0]
+			self.selectedItem = item.selectedUPCResult
 
 			self.itemTitle.text = self.selectedItem?.title
 
@@ -86,29 +83,31 @@ class EditItemDetailsViewController: UIViewController {
 		if selectedItem == nil {
 			// save all fields for fully custom item
 
-			self.customItem["title"] = self.itemTitle.text as AnyObject
+			self.item.title =  self.itemTitle.text
 		} else {
 			// only save modified fields for found items
 
 			if self.itemTitle.text != selectedItem!.title {
-				self.customItem["title"] = self.itemTitle.text as AnyObject
+				self.item.title = self.itemTitle.text
 			}
 		}
 
 		let itemRef = self.ref.child("items")
 
-		self.customItem["createdBy"] = user.uid as AnyObject
+		// add who created the item
+		self.item["createdBy"] = user.uid
 
 		if user.isAnonymous {
-			self.customItem["pantry"] = false as AnyObject
-			print("Saving: \(self.customItem.description)")
-			itemRef.childByAutoId().setValue(customItem)
+			self.item["pantry"] = false
+			print("Saving: \(self.item.title ?? self.item.description ?? "Item")")
+			itemRef.childByAutoId().setValue(item.data)
 			let _ = self.navigationController?.popToRootViewController(animated: true)
 		} else { // TODO: Use PantryUser
+			self.item["pantry"] = PantryUser.current?.pantryIdentifier?.value
 			ref.child("users").child(user.uid).child("pantry").observeSingleEvent(of: .value, with: { (snapshot) in
-				self.customItem["pantry"] = snapshot.value as AnyObject
-				print("Saving: \(self.customItem.description)")
-				itemRef.childByAutoId().setValue(self.customItem)
+				self.item["pantry"] = snapshot.fire as? String
+				print("Saving: \(self.item.title ?? self.item.description ?? "Item")")
+				itemRef.childByAutoId().setValue(self.item.data)
 				let _ = self.navigationController?.popToRootViewController(animated: true)
 			})
 

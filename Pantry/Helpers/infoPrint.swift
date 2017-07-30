@@ -33,7 +33,8 @@ func fb_log(_ type: OSLogType, message: StaticString, file: StaticString = #file
 		Analytics.logEvent(type.description, parameters: [
 			"message": message.description as NSString,
 			"args": info,
-			"location": ["file": filename, "line": line]
+			"file": filename,
+			"line": line
 			])
 	}
 

@@ -12,7 +12,10 @@ import FirebaseDatabase
 
 final class PantryUser {
 
+	/// The current logged in User
 	static var current: PantryUser?
+
+	/// Sets up the current user
 	static func configure() {
 		guard current == nil else {
 			return
@@ -39,6 +42,13 @@ final class PantryUser {
 		}
 	}
 
+	/// Handles Firebase Authentication changes
+	/// Signs in Anonymously if no user logged in
+	/// Begins observing User directory when logged in
+	///
+	/// - Parameters:
+	///   - auth: Firebase User object
+	///   - user: Firebase Auth object
 	private func authStateChanged(auth: Auth, user: User?) {
 		self.user = user
 
@@ -68,6 +78,8 @@ final class PantryUser {
 
 		guard !user.isAnonymous else {
 			// User is Anonymous
+			self.userRef = nil
+			self.userHandle = nil
 			fb_log(.info, message: "User is logged in anonymously, user directory ignored")
 			NotificationCenter.default.post(name: .pantryUserIsAnonymous, object: self)
 			return
@@ -82,9 +94,14 @@ final class PantryUser {
 
 	}
 
+	/// Called when data in the user directory is changed
+	///
+	/// - Parameter snapshot: Firebase snapshot
 	private func userDirChanged(snapshot: DataSnapshot) {
 		guard self.user != nil else {
 			// no user logged in, do nothing
+			self.userHandle = nil
+			self.userRef = nil
 			return
 		}
 
